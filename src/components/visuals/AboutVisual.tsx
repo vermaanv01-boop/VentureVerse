@@ -55,20 +55,20 @@ export function AboutVisual() {
         <div className="absolute left-6 top-6 flex items-center gap-3 sm:left-8 sm:top-8">
           <span className="h-1.5 w-1.5 bg-gold" aria-hidden="true" />
           <span className="font-mono text-[9px] uppercase tracking-[0.22em] text-ivory/65">
-            Identity study / 01
+            CSBS & CSE / 01
           </span>
         </div>
 
         <div className="absolute bottom-6 left-6 right-6 sm:bottom-8 sm:left-8 sm:right-8">
           <div className="font-display text-[clamp(2rem,5vw,3.6rem)] font-semibold uppercase leading-[0.9] tracking-[-0.05em] text-ivory">
-            Ideas
+            Technology
             <br />
-            into ventures<span className="text-gold">.</span>
+            meets enterprise<span className="text-gold">.</span>
           </div>
         </div>
 
         <div className="absolute right-6 top-6 font-mono text-[9px] uppercase tracking-[0.18em] text-ivory/65 sm:right-8 sm:top-8">
-          VV / Identity
+          Venture Verse / 2026
         </div>
 
         <div
@@ -77,8 +77,8 @@ export function AboutVisual() {
         />
       </div>
       <figcaption className="mt-4 flex items-center justify-between gap-4 font-mono text-[9px] uppercase tracking-[0.18em] text-navy/70">
-        <span>Archive — in progress</span>
-        <span>Visual identity / A</span>
+        <span>Department of CSBS &amp; CSE</span>
+        <span>Oriental Group of Institutes</span>
       </figcaption>
     </figure>
   );

@@ -1,25 +1,7 @@
-import { SITE } from "../../data/site";
+import { FLAGSHIP_EVENTS, SITE } from "../../data/site";
 import { Reveal } from "../ui/Reveal";
 import { SectionTitle } from "../ui/SectionTitle";
 import { AboutVisual } from "../visuals/AboutVisual";
-
-const PRINCIPLES = [
-  {
-    index: "01",
-    title: "Build in public",
-    detail: "Share the work, not just the outcome.",
-  },
-  {
-    index: "02",
-    title: "Learn from operators",
-    detail: "Bring practitioners into the room.",
-  },
-  {
-    index: "03",
-    title: "Make room for first-timers",
-    detail: "Curiosity is the only prerequisite.",
-  },
-];
 
 export function About() {
   return (
@@ -32,26 +14,28 @@ export function About() {
           <div className="lg:col-span-6 xl:col-span-5">
             <p className="eyebrow mb-6">
               <span className="eyebrow-line" aria-hidden="true" />
-              01 / The club
+              01 / Who we are
             </p>
             <SectionTitle
-              text="About Venture Verse"
+              text="About the fest"
               className="max-w-[9ch] text-[clamp(2.8rem,6.5vw,5.8rem)]"
             />
           </div>
 
           <Reveal className="lg:col-span-5 lg:col-start-8 lg:pt-9" delay={0.1}>
             <div className="body-copy max-w-xl space-y-5">
-              <p>
-                {SITE.name} is a student-led entrepreneurship and innovation
-                community. We bring together people who would rather test an
-                idea than wait for permission — founders, designers, engineers,
-                operators, and researchers.
+              <p className="font-display text-2xl font-medium leading-[1.15] tracking-[-0.03em] text-navy sm:text-3xl">
+                {SITE.subtitle}
               </p>
               <p>
-                Our work sits between the classroom and the real world:
-                conversations with practitioners, build sprints, critiques, and
-                the kind of rooms where honest questions are welcome.
+                Venture Verse is the premier annual techno-management festival
+                organized by the Department of CSBS &amp; CSE at Oriental Group
+                of Institutes, Bhopal.
+              </p>
+              <p>
+                Conceived as a battleground for innovators, it celebrates the
+                convergence of technical development, financial acumen, and
+                executive presence.
               </p>
             </div>
           </Reveal>
@@ -65,39 +49,88 @@ export function About() {
           <Reveal delay={0.12}>
             <p className="eyebrow mb-6">
               <span className="eyebrow-line" aria-hidden="true" />
-              Why we exist
+              The institution
             </p>
             <h3 className="display-title max-w-[12ch] text-[clamp(2.1rem,4.5vw,3.8rem)]">
-              Momentum is made together.
+              Built for the next generation of leaders.
             </h3>
             <div className="body-copy mt-6 max-w-lg space-y-4">
               <p>
-                We believe the first step is easier when it is shared. Venture
-                Verse exists to make that first step less lonely and the next
-                one more ambitious.
+                Founded with a vision to impart world-class technical and
+                professional education, Oriental Group of Institutes (OGI),
+                Bhopal is a premier educational conglomerate known for academic
+                excellence, innovation, and industry leadership in Central
+                India.
+              </p>
+              <p>
+                Driven by the Department of CSBS &amp; CSE, the institution
+                bridges computational intelligence with real-world enterprise
+                management, empowering students to pioneer cutting-edge
+                solutions for global challenges.
               </p>
             </div>
 
             <ul className="mt-9 border-t border-navy/15">
-              {PRINCIPLES.map((principle) => (
+              {FLAGSHIP_EVENTS.map((event) => (
                 <li
-                  key={principle.index}
-                  className="grid grid-cols-[2.4rem_1fr] gap-3 border-b border-navy/15 py-4 sm:grid-cols-[3.5rem_1fr_auto] sm:items-baseline"
+                  key={event.name}
+                  className="grid grid-cols-[2.4rem_1fr_auto] items-baseline gap-3 border-b border-navy/15 py-4 sm:grid-cols-[3.5rem_1fr_auto]"
                 >
                   <span className="font-mono text-[10px] tracking-[0.16em] text-navy/75">
-                    {principle.index}
+                    {event.index}
                   </span>
                   <span className="font-display text-lg font-medium tracking-[-0.02em] text-navy">
-                    {principle.title}
+                    {event.name}
                   </span>
-                  <span className="col-start-2 font-body text-sm leading-relaxed text-navy/75 sm:col-start-3 sm:max-w-[15rem] sm:text-right">
-                    {principle.detail}
+                  <span className="font-body text-xs leading-relaxed text-navy/70 sm:text-right">
+                    {event.format}
                   </span>
                 </li>
               ))}
             </ul>
           </Reveal>
         </div>
+
+        <Reveal className="mt-20 sm:mt-24" delay={0.08}>
+          <div className="grid gap-8 border-t border-navy/15 pt-8 lg:grid-cols-12 lg:items-end lg:gap-12">
+            <div className="lg:col-span-4">
+              <p className="eyebrow mb-5">
+                <span className="eyebrow-line" aria-hidden="true" />
+                Festival film
+              </p>
+              <h3 className="display-title text-[clamp(2rem,4vw,3.4rem)]">
+                The energy, in motion.
+              </h3>
+              <p className="body-copy mt-5 max-w-sm text-sm">
+                Step inside the rooms, stages, and conversations that carry
+                Venture Verse from an idea into a shared experience.
+              </p>
+            </div>
+
+            <div className="lg:col-span-8">
+              <figure className="clip-corner overflow-hidden border border-navy/20 bg-navy shadow-panel">
+                <video
+                  controls
+                  playsInline
+                  preload="metadata"
+                  poster="/images/glimpse/glimpse-03-1280.webp"
+                  className="aspect-video w-full bg-navy object-cover"
+                  aria-label="Venture Verse festival film"
+                >
+                  <source
+                    src="/videos/venture-verse-story.mp4"
+                    type="video/mp4"
+                  />
+                  Your browser does not support the video element.
+                </video>
+                <figcaption className="flex flex-col gap-2 border-t border-ivory/15 bg-charcoal px-4 py-3 font-mono text-[8px] uppercase tracking-[0.18em] text-ivory/60 sm:flex-row sm:items-center sm:justify-between">
+                  <span>Venture Verse / Festival film</span>
+                  <span>Sound on · Local archive</span>
+                </figcaption>
+              </figure>
+            </div>
+          </div>
+        </Reveal>
       </div>
     </section>
   );

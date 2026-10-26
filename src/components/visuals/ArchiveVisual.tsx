@@ -37,7 +37,7 @@ export function ArchiveVisual({
 
       <div className="absolute left-5 right-5 top-5 flex items-start justify-between gap-4 sm:left-7 sm:right-7 sm:top-7">
         <span className="font-mono text-[9px] uppercase tracking-[0.22em] text-gold">
-          VV / Archive
+          VV / Glimpses
         </span>
         <span className="font-mono text-[8px] uppercase tracking-[0.18em] text-ivory/65">
           Frame {item.index}
@@ -47,14 +47,14 @@ export function ArchiveVisual({
       <div className="absolute bottom-5 left-5 right-5 flex items-end justify-between gap-6 sm:bottom-7 sm:left-7 sm:right-7">
         <div>
           <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-ivory/65">
-            Previous ceremony
+            Venture Craft 2025
           </span>
           <p className="mt-1 font-display text-[clamp(1.7rem,4vw,3.2rem)] font-semibold uppercase leading-[0.9] tracking-[-0.045em] text-ivory">
-            The archive
+            Venture Verse
           </p>
         </div>
         <span className="hidden font-mono text-[9px] uppercase tracking-[0.18em] text-ivory/65 sm:block">
-          {item.index} / 16
+          {item.index} / {String(total).padStart(2, "0")}
         </span>
       </div>
     </div>

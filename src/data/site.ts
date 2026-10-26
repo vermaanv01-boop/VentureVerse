@@ -1,57 +1,184 @@
-export type EventCategory = {
+export const REGISTRATION_URL = "https://forms.gle/gLbbJ6NcJmQjCRit7";
+
+export const SITE = {
+  name: "Venture Verse",
+  shortName: "VV",
+  year: "2026",
+  tagline: "Department of CSBS & CSE · Oriental Group of Institutes",
+  subtitle: "Where Technology, Innovation, and Corporate Vision Converge",
+  description:
+    "Venture Verse is the annual flagship techno-management fest by the Department of CSBS & CSE, Oriental Group of Institutes, Bhopal, featuring Venture Craft, Mudra, Karvaan, and UNIFEST.",
+  institution:
+    "Oriental Group of Institutes, Bhopal",
+  eventDate: null as string | null,
+  eventDateLabel: "Two action-packed days · 2026",
+  locationLabel: "Oriental Group of Institutes, Bhopal",
+  email: "ventureverseoist@gmail.com",
+  registrationUrl: REGISTRATION_URL,
+};
+
+export const ADDRESS_LINES = [
+  "Oriental Group of Institutes,",
+  "Oriental Campus, Opp Patel Nagar,",
+  "Raisen Road, Bhopal – 462022,",
+  "Madhya Pradesh, India",
+];
+
+export type NavLink = {
   label: string;
+  href: string;
+};
+
+export const NAV_LINKS: NavLink[] = [
+  { label: "Home", href: "#home" },
+  { label: "About", href: "#about" },
+  { label: "Events", href: "#events" },
+  { label: "Schedule", href: "#roadmap" },
+  { label: "Glimpses", href: "#glimpses" },
+  { label: "Contact", href: "/contact.html" },
+];
+
+export const FOOTER_LINKS: NavLink[] = [
+  { label: "Home", href: "#home" },
+  { label: "About", href: "#about" },
+  { label: "Events", href: "#events" },
+  { label: "Schedule", href: "#roadmap" },
+  { label: "Glimpses", href: "#glimpses" },
+  { label: "Contact", href: "/contact.html" },
+];
+
+export type SocialLink = {
+  label: string;
+  href: string;
+  icon: "instagram" | "whatsapp" | "linkedin";
+};
+
+export const SOCIAL_LINKS: SocialLink[] = [
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com/venture_verse_2k26?srtk=ZDNlZDc0MzIxNw==",
+    icon: "instagram",
+  },
+  {
+    label: "WhatsApp community",
+    href: "https://chat.whatsapp.com/GGx1x793cLs24Ox6vrRmFJ?s=cl&p=a&mlu=4&ilr=4",
+    icon: "whatsapp",
+  },
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/venture-verse-833970446",
+    icon: "linkedin",
+  },
+];
+
+export const CONTACT_EMAILS = [
+  { label: "General enquiries", address: "ventureverseoist@gmail.com" },
+  { label: "Venture Craft", address: "venturecraft2025@gmail.com" },
+];
+
+export type EventItem = {
+  index: string;
+  name: string;
+  format: string;
+  tagline: string;
+  description: string;
+  mascot: string;
+  mascotAlt: string;
+  registerUrl: string;
+};
+
+export const FLAGSHIP_EVENTS: EventItem[] = [
+  {
+    index: "01",
+    name: "Venture Craft",
+    format: "Ideathon",
+    tagline: "Think · Adapt · Innovate",
+    description:
+      "Pitch disruptive tech and startup solutions to an elite jury panel. From initial idea to working prototype, innovate to dominate.",
+    mascot: "/images/events/fox-mascot.jpg",
+    mascotAlt: "Venture Craft fox mascot",
+    registerUrl: REGISTRATION_URL,
+  },
+  {
+    index: "02",
+    name: "Mudra",
+    format: "7-Day Virtual Currency Trading",
+    tagline: "Analyze · Grow · Trade",
+    description:
+      "Test real-time market instinct in an intensive 7-day virtual trading arena. Master risk, manage portfolios, and out-trade the competition.",
+    mascot: "/images/events/bull-mascot.jpg",
+    mascotAlt: "Mudra bull mascot",
+    registerUrl: REGISTRATION_URL,
+  },
+  {
+    index: "03",
+    name: "Karvaan",
+    format: "Corporate Ramp Walk",
+    tagline: "Present · Connect · Lead",
+    description:
+      "Step onto the corporate runway. A premier showcase of executive styling, boardroom poise, and charismatic professional presence.",
+    mascot: "/images/events/peacock-mascot.jpg",
+    mascotAlt: "Karvaan peacock mascot",
+    registerUrl: REGISTRATION_URL,
+  },
+  {
+    index: "04",
+    name: "UNIFEST",
+    format: "The Startup Carnival",
+    tagline: "Showcase · Connect · Sell",
+    description:
+      "A vibrant startup marketplace providing dedicated stalls to exhibit, market, and sell disruptive products directly to customers while building brand presence.",
+    mascot: "/images/events/unifest-mascot.png",
+    mascotAlt: "UNIFEST unicorn emblem",
+    registerUrl: REGISTRATION_URL,
+  },
+];
+
+export type RoadmapStep = {
+  label: string;
+  detail: string;
   side: "left" | "right";
   progress: number;
   length: number;
   shouldFlip?: boolean;
 };
 
-export const SITE = {
-  name: "Venture Verse",
-  shortName: "VV",
-  tagline: "Ideas into ventures.",
-  subtitle: "The Entrepreneurship & Innovation Club",
-  description:
-    "A student-led entrepreneurship and innovation community turning curiosity into momentum.",
-  eventDate: null as string | null,
-  eventDateLabel: "Dates to be announced",
-  locationLabel: "Venue to be announced",
-  email: null as string | null,
-};
-
-export const NAV_LINKS = [
-  { label: "About", href: "#about" },
-  { label: "Events", href: "#events" },
-  { label: "Sponsors", href: "#sponsors" },
-  { label: "Speakers", href: "#speakers" },
-  { label: "Glimpse", href: "#glimpse" },
-  { label: "Contact", href: "#contact" },
-] as const;
-
-export const EVENT_CATEGORIES: EventCategory[] = [
-  { label: "Workshop", side: "left", progress: 0.21, length: 120, shouldFlip: true },
-  { label: "Fun Zone", side: "right", progress: 0.25, length: 300 },
-  { label: "F5 Talks", side: "left", progress: 0.34, length: 300 },
-  { label: "Coding", side: "left", progress: 0.37, length: 150 },
-  { label: "Robotics", side: "right", progress: 0.41, length: 100, shouldFlip: true },
-  { label: "Gaming", side: "left", progress: 0.58, length: 280 },
+export const ROADMAP_STEPS: RoadmapStep[] = [
   {
-    label: "Finance & Management",
+    label: "Venture Craft",
+    detail: "Ideation & Hackathon",
     side: "left",
-    progress: 0.61,
+    progress: 0.06,
+    length: 140,
+  },
+  {
+    label: "Mudra",
+    detail: "Virtual Financial Trading",
+    side: "right",
+    progress: 0.28,
+    length: 180,
+  },
+  {
+    label: "Karvaan",
+    detail: "Executive Fashion & Persona",
+    side: "left",
+    progress: 0.5,
+    length: 200,
+  },
+  {
+    label: "Tech Talks & Keynotes",
+    detail: "Conversations with practitioners",
+    side: "right",
+    progress: 0.73,
+    length: 160,
+  },
+  {
+    label: "Networking & Awards",
+    detail: "The festival finale",
+    side: "left",
+    progress: 0.92,
     length: 150,
   },
-  { label: "Go Karting", side: "right", progress: 0.64, length: 120, shouldFlip: true },
-  {
-    label: "Brain Storming",
-    side: "left",
-    progress: 0.7,
-    length: 120,
-    shouldFlip: true,
-  },
-  { label: "Cultural Night", side: "right", progress: 0.73, length: 200 },
-  { label: "Standup Comedy", side: "right", progress: 0.78, length: 120 },
-  { label: "Miscellaneous", side: "left", progress: 0.83, length: 120 },
 ];
 
 export const EVENT_PATH =
@@ -66,7 +193,7 @@ export type Sponsor = {
 
 export const SPONSORS: Sponsor[] = [
   {
-    name: "Arun",
+    name: "Arun Ice Creams",
     src: "/images/sponsors/sponsor-arun.webp",
     width: 356,
     height: 228,
@@ -84,13 +211,92 @@ export const SPONSOR_MARQUEE = Array.from(
   (_, index) => SPONSORS[index % SPONSORS.length],
 );
 
-export const SPEAKER_SLOTS = [
-  { index: "01", role: "Founder" },
-  { index: "02", role: "Investor" },
-  { index: "03", role: "Operator" },
-  { index: "04", role: "Researcher" },
-  { index: "05", role: "Designer" },
-  { index: "06", role: "Builder" },
+export type Speaker = {
+  index: string;
+  name: string;
+  role: string;
+  image: string;
+  alt: string;
+};
+
+export const SPEAKERS: Speaker[] = [
+  {
+    index: "01",
+    name: "CA Mayserah Mazhar",
+    role: "Chartered Accountant & Financial Strategist",
+    image: "/images/speakers/mayserah-mazhar.jpg",
+    alt: "CA Mayserah Mazhar",
+  },
+  {
+    index: "02",
+    name: "Gaurav Sharma",
+    role: "Distinguished Speaker / Guest",
+    image: "/images/speakers/gaurav-sharma.jpg",
+    alt: "Gaurav Sharma speaking at a podium",
+  },
+  {
+    index: "03",
+    name: "Aviral Ashok Jain",
+    role: "Industry Innovator & Entrepreneur",
+    image: "/images/speakers/aviral-ashok-jain.jpg",
+    alt: "Aviral Ashok Jain at Venture Verse",
+  },
+  {
+    index: "04",
+    name: "Mrs. Deepti Sharma",
+    role: "Academic Leader & Guest of Honour",
+    image: "/images/speakers/deepti-sharma.jpg",
+    alt: "Mrs. Deepti Sharma attending the event",
+  },
+];
+
+export type TeamMember = {
+  name: string;
+  role: string;
+  image: string;
+  phone: string;
+  email: string;
+};
+
+export const FACULTY_LEADERSHIP: TeamMember[] = [
+  {
+    name: "Prof. Rakesh Jaiswal",
+    role: "Faculty Coordinator, Department of CSBS & CSE",
+    image: "/images/team/rakesh-jaiswal.jpg",
+    phone: "+918989490248",
+    email: "rakeshjaiswal@oriental.ac.in",
+  },
+];
+
+export const STUDENT_COORDINATORS: TeamMember[] = [
+  {
+    name: "Swastik Pandey",
+    role: "Student Coordinator",
+    image: "/images/team/swastik-pandey.jpg",
+    phone: "+919301732087",
+    email: "swastikpandey2901@gmail.com",
+  },
+  {
+    name: "Adarsh Raghuwanshi",
+    role: "Student Coordinator",
+    image: "/images/team/adarsh-raghuwanshi.jpg",
+    phone: "+916260668775",
+    email: "adarshraghuwanshi10e@gmail.com",
+  },
+  {
+    name: "Shreya Langhiya",
+    role: "Student Coordinator",
+    image: "/images/team/shreya-langhiya.jpg",
+    phone: "+918305151339",
+    email: "shreyalanghiya@gmail.com",
+  },
+  {
+    name: "Aadi Jain",
+    role: "Student Coordinator",
+    image: "/images/team/aadi-jain.jpg",
+    phone: "+917879577144",
+    email: "aadijain1711@gmail.com",
+  },
 ];
 
 export type ArchiveItem = {
@@ -100,184 +306,60 @@ export type ArchiveItem = {
   width: number;
   height: number;
   alt: string;
+  caption: string;
 };
 
-export const ARCHIVE_ITEMS: ArchiveItem[] = [
-  {
-    index: "01",
-    src: "/images/glimpse/glimpse-01-1280.webp",
-    srcSet:
-      "/images/glimpse/glimpse-01-720.webp 720w, /images/glimpse/glimpse-01-1280.webp 1280w",
-    width: 1280,
-    height: 853,
-    alt: "Venture Verse ceremony archive, frame 01",
-  },
-  {
-    index: "02",
-    src: "/images/glimpse/glimpse-02-1280.webp",
-    srcSet:
-      "/images/glimpse/glimpse-02-720.webp 720w, /images/glimpse/glimpse-02-1280.webp 1280w",
-    width: 1280,
-    height: 960,
-    alt: "Venture Verse ceremony archive, frame 02",
-  },
-  {
-    index: "03",
-    src: "/images/glimpse/glimpse-03-1280.webp",
-    srcSet:
-      "/images/glimpse/glimpse-03-720.webp 720w, /images/glimpse/glimpse-03-1280.webp 1280w",
-    width: 1280,
-    height: 960,
-    alt: "Venture Verse ceremony archive, frame 03",
-  },
-  {
-    index: "04",
-    src: "/images/glimpse/glimpse-04-1280.webp",
-    srcSet:
-      "/images/glimpse/glimpse-04-720.webp 720w, /images/glimpse/glimpse-04-1280.webp 1280w",
-    width: 1200,
-    height: 672,
-    alt: "Venture Verse ceremony archive, frame 04",
-  },
-  {
-    index: "05",
-    src: "/images/glimpse/glimpse-05-1280.webp",
-    srcSet:
-      "/images/glimpse/glimpse-05-720.webp 720w, /images/glimpse/glimpse-05-1280.webp 1280w",
-    width: 1064,
-    height: 596,
-    alt: "Venture Verse ceremony archive, frame 05",
-  },
-  {
-    index: "06",
-    src: "/images/glimpse/glimpse-06-1280.webp",
-    srcSet:
-      "/images/glimpse/glimpse-06-720.webp 720w, /images/glimpse/glimpse-06-1280.webp 1280w",
-    width: 1280,
-    height: 853,
-    alt: "Venture Verse ceremony archive, frame 06",
-  },
-  {
-    index: "07",
-    src: "/images/glimpse/glimpse-07-1280.webp",
-    srcSet:
-      "/images/glimpse/glimpse-07-720.webp 720w, /images/glimpse/glimpse-07-1280.webp 1280w",
-    width: 1280,
-    height: 720,
-    alt: "Venture Verse ceremony archive, frame 07",
-  },
-  {
-    index: "08",
-    src: "/images/glimpse/glimpse-08-1280.webp",
-    srcSet:
-      "/images/glimpse/glimpse-08-720.webp 720w, /images/glimpse/glimpse-08-1280.webp 1280w",
-    width: 1280,
-    height: 720,
-    alt: "Venture Verse ceremony archive, frame 08",
-  },
-  {
-    index: "09",
-    src: "/images/glimpse/glimpse-09-1280.webp",
-    srcSet:
-      "/images/glimpse/glimpse-09-720.webp 720w, /images/glimpse/glimpse-09-1280.webp 1280w",
-    width: 1280,
-    height: 853,
-    alt: "Venture Verse ceremony archive, frame 09",
-  },
-  {
-    index: "10",
-    src: "/images/glimpse/glimpse-10-1280.webp",
-    srcSet:
-      "/images/glimpse/glimpse-10-720.webp 720w, /images/glimpse/glimpse-10-1280.webp 1280w",
-    width: 1272,
-    height: 954,
-    alt: "Venture Verse ceremony archive, frame 10",
-  },
-  {
-    index: "11",
-    src: "/images/glimpse/glimpse-11-1280.webp",
-    srcSet:
-      "/images/glimpse/glimpse-11-720.webp 720w, /images/glimpse/glimpse-11-1280.webp 1280w",
-    width: 1280,
-    height: 960,
-    alt: "Venture Verse ceremony archive, frame 11",
-  },
-  {
-    index: "12",
-    src: "/images/glimpse/glimpse-12-1280.webp",
-    srcSet:
-      "/images/glimpse/glimpse-12-720.webp 720w, /images/glimpse/glimpse-12-1280.webp 1280w",
-    width: 1280,
-    height: 853,
-    alt: "Venture Verse ceremony archive, frame 12",
-  },
-  {
-    index: "13",
-    src: "/images/glimpse/glimpse-13-1280.webp",
-    srcSet:
-      "/images/glimpse/glimpse-13-720.webp 720w, /images/glimpse/glimpse-13-1280.webp 1280w",
-    width: 1280,
-    height: 853,
-    alt: "Venture Verse ceremony archive, frame 13",
-  },
-  {
-    index: "14",
-    src: "/images/glimpse/glimpse-14-1280.webp",
-    srcSet:
-      "/images/glimpse/glimpse-14-720.webp 720w, /images/glimpse/glimpse-14-1280.webp 1280w",
-    width: 1280,
-    height: 853,
-    alt: "Venture Verse ceremony archive, frame 14",
-  },
-  {
-    index: "15",
-    src: "/images/glimpse/glimpse-15-1280.webp",
-    srcSet:
-      "/images/glimpse/glimpse-15-720.webp 720w, /images/glimpse/glimpse-15-1280.webp 1280w",
-    width: 1079,
-    height: 592,
-    alt: "Venture Verse ceremony archive, frame 15",
-  },
-  {
-    index: "16",
-    src: "/images/glimpse/glimpse-16-1280.webp",
-    srcSet:
-      "/images/glimpse/glimpse-16-720.webp 720w, /images/glimpse/glimpse-16-1280.webp 1280w",
-    width: 1280,
-    height: 720,
-    alt: "Venture Verse ceremony archive, frame 16",
-  },
+const ARCHIVE_CAPTIONS = [
+  "Preparing the Venture Craft identity",
+  "Creative planning in progress",
+  "A moment from the opening ceremony",
+  "Welcoming our guest of honour",
+  "Behind the scenes at Oriental",
+  "Pitching ideas with purpose",
+  "Inside the trading desk arena",
+  "A packed auditorium of curious minds",
+  "The Venture Verse community",
+  "Celebrating the winners",
+  "Confidence on the runway",
+  "Recognizing achievement",
+  "A shared celebration of innovation",
+  "The Venture Verse community comes together",
+  "Faces from the Venture Verse archive",
+  "A closing frame from the festival",
 ];
 
-export const CONTACT_CARDS = [
-  {
-    title: "Partnerships",
-    description:
-      "For sponsorships, campus collaborations, and long-term partnerships.",
-    note: "Contact channel to be announced",
-    icon: "handshake" as const,
-  },
-  {
-    title: "Speakers & mentors",
-    description:
-      "For founder conversations, workshops, critiques, and mentorship.",
-    note: "Contact channel to be announced",
-    icon: "mic" as const,
-  },
-  {
-    title: "Press & community",
-    description:
-      "For media requests, student collaborations, and community questions.",
-    note: "Contact channel to be announced",
-    icon: "message" as const,
-  },
+const ARCHIVE_META = [
+  { width: 1280, height: 853 },
+  { width: 1280, height: 960 },
+  { width: 1280, height: 960 },
+  { width: 1200, height: 672 },
+  { width: 1064, height: 596 },
+  { width: 1280, height: 853 },
+  { width: 1280, height: 720 },
+  { width: 1280, height: 720 },
+  { width: 1280, height: 853 },
+  { width: 1272, height: 954 },
+  { width: 1280, height: 960 },
+  { width: 1280, height: 853 },
+  { width: 1280, height: 853 },
+  { width: 1280, height: 853 },
+  { width: 1079, height: 592 },
+  { width: 1280, height: 720 },
 ];
 
-export const FOOTER_LINKS = [
-  { label: "About", href: "#about" },
-  { label: "Events", href: "#events" },
-  { label: "Sponsors", href: "#sponsors" },
-  { label: "Speakers", href: "#speakers" },
-  { label: "Glimpse", href: "#glimpse" },
-  { label: "Contact", href: "#contact" },
-];
+export const ARCHIVE_ITEMS: ArchiveItem[] = ARCHIVE_CAPTIONS.map(
+  (caption, index) => {
+    const number = String(index + 1).padStart(2, "0");
+    const meta = ARCHIVE_META[index];
+
+    return {
+      index: number,
+      src: `/images/glimpse/glimpse-${number}-1280.webp`,
+      srcSet: `/images/glimpse/glimpse-${number}-720.webp 720w, /images/glimpse/glimpse-${number}-1280.webp 1280w`,
+      width: meta.width,
+      height: meta.height,
+      alt: `${caption}, Venture Verse archive frame ${number}`,
+      caption,
+    };
+  },
+);

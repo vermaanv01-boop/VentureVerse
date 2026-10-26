@@ -1,10 +1,10 @@
 import { useLayoutEffect, useRef, useState } from "react";
 import { gsap } from "../../lib/gsap";
-import { EVENT_CATEGORIES, EVENT_PATH, type EventCategory } from "../../data/site";
+import { EVENT_PATH, ROADMAP_STEPS, type RoadmapStep } from "../../data/site";
 import { usePrefersReducedMotion } from "../../hooks/usePrefersReducedMotion";
 import { SectionTitle } from "../ui/SectionTitle";
 
-type PositionedCategory = EventCategory & {
+type PositionedCategory = RoadmapStep & {
   x: number;
   y: number;
 };
@@ -24,7 +24,7 @@ export function ExploreEvents() {
 
     const length = path.getTotalLength();
     setPositions(
-      EVENT_CATEGORIES.map((category) => {
+      ROADMAP_STEPS.map((category) => {
         const point = path.getPointAtLength(length * category.progress);
         return { ...category, x: point.x, y: point.y };
       }),
@@ -121,23 +121,23 @@ export function ExploreEvents() {
 
   return (
     <section
-      id="events"
+      id="roadmap"
       className="section-dark relative z-10 scroll-mt-20 overflow-hidden bg-navy"
     >
       <div className="container-page section-pad">
         <div className="border-t border-ivory/15 pt-10 text-center lg:pt-12">
           <p className="eyebrow mb-6 justify-center">
             <span className="eyebrow-line" aria-hidden="true" />
-            02 / The programme
+            03 / Event roadmap
             <span className="eyebrow-line" aria-hidden="true" />
           </p>
           <SectionTitle
-            text="Explore events"
+            text="The journey unfolds"
             className="text-[clamp(3rem,8vw,7rem)]"
           />
           <p className="body-copy mx-auto mt-5 max-w-xl text-pretty">
-            A rotating programme of formats built for people who make things.
-            Follow the line through the categories shaping the next edition.
+            A curated timeline of what awaits you across two action-packed days
+            at Venture Verse 2026.
           </p>
         </div>
 
@@ -228,7 +228,10 @@ export function ExploreEvents() {
                         [isLeft ? "right" : "left"]: lineLength + 14,
                       }}
                     >
-                      {category.label}
+                      <span className="block">{category.label}</span>
+                      <span className="mt-1 block font-body text-[10px] normal-case tracking-normal text-ivory/55">
+                        {category.detail}
+                      </span>
                     </span>
                   </div>
                 </div>
@@ -251,7 +254,7 @@ export function ExploreEvents() {
         </div>
 
         <ul className="mx-auto mt-12 grid max-w-2xl grid-cols-2 gap-x-4 gap-y-0 border-t border-ivory/15 sm:grid-cols-3 lg:hidden">
-          {EVENT_CATEGORIES.map((category, index) => (
+          {ROADMAP_STEPS.map((category, index) => (
             <li
               key={category.label}
               className="flex items-baseline gap-2 border-b border-ivory/15 py-3"
@@ -261,13 +264,16 @@ export function ExploreEvents() {
               </span>
               <span className="font-body text-xs leading-snug text-ivory/75">
                 {category.label}
+                <span className="mt-0.5 block text-[10px] text-ivory/50">
+                  {category.detail}
+                </span>
               </span>
             </li>
           ))}
         </ul>
 
         <p className="mt-10 text-center font-mono text-[9px] uppercase tracking-[0.2em] text-ivory/65">
-          12 categories / Full programme and dates to be announced
+          Five waypoints / Two action-packed days at Venture Verse 2026
         </p>
       </div>
     </section>

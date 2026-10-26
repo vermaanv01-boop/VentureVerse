@@ -15,7 +15,7 @@ export function Sponsors() {
           <div>
             <p className="eyebrow mb-6">
               <span className="eyebrow-line" aria-hidden="true" />
-              03 / Partners
+              04 / Partners
             </p>
             <SectionTitle
               text="Past sponsors"
@@ -42,9 +42,13 @@ export function Sponsors() {
       <div className="container-page mt-12">
         <div className="flex flex-col gap-5 border-t border-navy/15 pt-6 sm:flex-row sm:items-center sm:justify-between">
           <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-navy/70">
-            Selected partners from the Venture Verse archive
+            Arun Ice Creams · Pizza Hut
           </p>
-          <ClipButton href="#contact" variant="light" className="!h-10 !px-5">
+          <ClipButton
+            href="mailto:ventureverseoist@gmail.com?subject=Venture%20Verse%20Partnership"
+            variant="light"
+            className="!h-10 !px-5"
+          >
             Become a partner
           </ClipButton>
         </div>
