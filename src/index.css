@@ -4,19 +4,20 @@
 
 :root {
   color-scheme: dark;
-  --ink: #111110;
-  --cream: #f3eee7;
-  --copper: #b66a45;
-  --copper-light: #d8a07a;
+  --navy: #202c3c;
+  --slate: #657789;
+  --gold: #b59a65;
+  --ivory: #f4efe4;
+  --charcoal: #292a2d;
 }
 
 * {
-  border-color: rgba(243, 238, 231, 0.12);
+  border-color: rgba(244, 239, 228, 0.14);
 }
 
 html {
   scroll-behavior: smooth;
-  background: var(--ink);
+  background: var(--navy);
 }
 
 .skip-link {
