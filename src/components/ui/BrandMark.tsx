@@ -1,4 +1,4 @@
-type BrandMarkProps = {
+git commit -m "added photo "type BrandMarkProps = {
   className?: string;
   showWordmark?: boolean;
 };
