@@ -9,6 +9,8 @@ import { Glimpse } from "./components/sections/Glimpse";
 import { Hero } from "./components/sections/Hero";
 import { Speakers } from "./components/sections/Speakers";
 import { Sponsors } from "./components/sections/Sponsors";
+import { AmbientCanvas } from "./components/visuals/AmbientCanvas";
+import { ScrollProgress } from "./components/ui/ScrollProgress";
 
 export default function App() {
   useSmoothScroll();
@@ -18,7 +20,9 @@ export default function App() {
       <a href="#main" className="skip-link">
         Skip to content
       </a>
+      <ScrollProgress />
       <div className="grain" aria-hidden="true" />
+      <AmbientCanvas />
       <Nav />
       <main id="main" tabIndex={-1} className="outline-none">
         <Hero />
