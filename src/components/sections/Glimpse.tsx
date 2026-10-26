@@ -255,12 +255,12 @@ export function Glimpse() {
               </button>
             </div>
 
-            <p className="text-center font-mono text-[9px] uppercase tracking-[0.18em] text-navy/55">
+            <p className="text-center font-mono text-[9px] uppercase tracking-[0.18em] text-navy/70">
               Swipe, click a side card, or use the arrow keys
             </p>
           </div>
 
-          <p className="mx-auto mt-8 max-w-xl text-center font-body text-xs leading-relaxed text-navy/50">
+          <p className="mx-auto mt-8 max-w-xl text-center font-body text-xs leading-relaxed text-navy/70">
             Sixteen frames from the Venture Verse archive. Use the controls or
             swipe to move through the previous ceremonies.
           </p>

@@ -89,7 +89,7 @@ function Countdown({ targetDate }: { targetDate: string | null }) {
             <div className="font-display text-xl font-medium leading-none text-navy sm:text-2xl">
               {cell.value}
             </div>
-            <div className="mt-1.5 font-mono text-[8px] uppercase tracking-[0.16em] text-navy/60">
+            <div className="mt-1.5 font-mono text-[8px] uppercase tracking-[0.16em] text-navy/70">
               {cell.label}
             </div>
           </div>
@@ -294,7 +294,7 @@ export function Hero() {
                   itemClass="hero-subtitle-word"
                 />
               </h2>
-              <p className="hero-copy mt-4 max-w-md font-body text-sm leading-[1.75] text-ivory/60 sm:text-base">
+              <p className="hero-copy mt-4 max-w-md font-body text-sm leading-[1.75] text-ivory/70 sm:text-base">
                 A student-led community for builders, designers, operators, and
                 researchers turning curiosity into momentum.
               </p>
@@ -334,7 +334,7 @@ export function Hero() {
                 Explore events
               </ClipButton>
             </div>
-            <p className="mt-4 text-center font-mono text-[9px] uppercase tracking-[0.18em] text-navy/55">
+            <p className="mt-4 text-center font-mono text-[9px] uppercase tracking-[0.18em] text-navy/70">
               Registration details to follow
             </p>
           </article>
@@ -342,7 +342,7 @@ export function Hero() {
       </div>
 
       <div className="absolute bottom-4 right-4 z-20 flex items-center gap-3 sm:bottom-6 sm:right-6">
-        <span className="hidden font-mono text-[8px] uppercase tracking-[0.2em] text-ivory/45 sm:block">
+        <span className="hidden font-mono text-[8px] uppercase tracking-[0.2em] text-ivory/60 sm:block">
           Background film
         </span>
         <button

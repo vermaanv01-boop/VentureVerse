@@ -41,7 +41,7 @@ export function Sponsors() {
 
       <div className="container-page mt-12">
         <div className="flex flex-col gap-5 border-t border-navy/15 pt-6 sm:flex-row sm:items-center sm:justify-between">
-          <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-navy/55">
+          <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-navy/70">
             Selected partners from the Venture Verse archive
           </p>
           <ClipButton href="#contact" variant="light" className="!h-10 !px-5">

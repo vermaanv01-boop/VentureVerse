@@ -114,7 +114,7 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
                     </span>
                     <ArrowUpRight
                       size={18}
-                      className="text-ivory/40 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-gold"
+                      className="text-ivory/60 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-gold"
                       aria-hidden="true"
                     />
                   </a>
