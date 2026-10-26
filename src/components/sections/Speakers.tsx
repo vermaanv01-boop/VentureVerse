@@ -30,7 +30,7 @@ export function Speakers() {
       <div className="mt-12 sm:mt-16">
         <Marquee
           items={SPEAKER_SLOTS}
-          ariaLabel="Speaker placeholders"
+          ariaLabel="Speaker line-up preview"
           speed={22}
           mask
           renderItem={(slot) => <SpeakerCard slot={slot} />}

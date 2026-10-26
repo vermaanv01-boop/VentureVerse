@@ -21,12 +21,14 @@ export default function App() {
       <Nav />
       <main id="main" tabIndex={-1} className="outline-none">
         <Hero />
-        <About />
-        <ExploreEvents />
-        <Sponsors />
-        <Speakers />
-        <Glimpse />
-        <Contact />
+        <div className="relative z-10 bg-ink">
+          <About />
+          <ExploreEvents />
+          <Sponsors />
+          <Speakers />
+          <Glimpse />
+          <Contact />
+        </div>
       </main>
       <Footer />
     </>
