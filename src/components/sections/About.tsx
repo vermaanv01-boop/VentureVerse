@@ -110,22 +110,25 @@ export function About() {
             <div className="lg:col-span-8">
               <figure className="clip-corner overflow-hidden border border-navy/20 bg-navy shadow-panel">
                 <video
+                  autoPlay
+                  loop
+                  muted
                   controls
                   playsInline
                   preload="metadata"
-                  poster="/images/glimpse/glimpse-03-1280.webp"
+                  poster="/images/hero-poster.jpg"
                   className="aspect-video w-full bg-navy object-cover"
                   aria-label="Venture Verse festival film"
                 >
                   <source
-                    src="/videos/venture-verse-story.mp4"
+                    src="/videos/venture-background.mp4"
                     type="video/mp4"
                   />
                   Your browser does not support the video element.
                 </video>
                 <figcaption className="flex flex-col gap-2 border-t border-ivory/15 bg-charcoal px-4 py-3 font-mono text-[8px] uppercase tracking-[0.18em] text-ivory/60 sm:flex-row sm:items-center sm:justify-between">
                   <span>Venture Verse / Festival film</span>
-                  <span>Sound on · Local archive</span>
+                  <span>Cinematic Reel · venture-background</span>
                 </figcaption>
               </figure>
             </div>
