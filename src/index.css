@@ -26,8 +26,8 @@ html {
   left: 0.75rem;
   z-index: 100;
   transform: translateY(-180%);
-  background: var(--cream);
-  color: var(--ink);
+  background: var(--ivory);
+  color: var(--navy);
   padding: 0.65rem 0.9rem;
   font-family: "IBM Plex Mono", ui-monospace, monospace;
   font-size: 0.65rem;
@@ -44,20 +44,20 @@ body {
   margin: 0;
   min-width: 320px;
   overflow-x: hidden;
-  background: var(--ink);
-  color: var(--cream);
+  background: var(--navy);
+  color: var(--ivory);
   font-family: "DM Sans Variable", "DM Sans", sans-serif;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
 
 ::selection {
-  background: var(--copper);
-  color: var(--ink);
+  background: var(--gold);
+  color: var(--navy);
 }
 
 :focus-visible {
-  outline: 2px solid var(--copper-light);
+  outline: 2px solid var(--gold);
   outline-offset: 4px;
 }
 
@@ -107,19 +107,19 @@ html.lenis body {
   }
 
   .eyebrow {
-    @apply inline-flex items-center gap-3 font-mono text-[10px] font-medium uppercase tracking-[0.24em] text-copper-light sm:text-[11px];
+    @apply inline-flex items-center gap-3 font-mono text-[10px] font-medium uppercase tracking-[0.24em] text-gold sm:text-[11px];
   }
 
   .eyebrow-line {
-    @apply h-px w-8 bg-copper/70;
+    @apply h-px w-8 bg-gold/80;
   }
 
   .display-title {
-    @apply font-display font-semibold uppercase leading-[0.9] tracking-[-0.055em] text-cream;
+    @apply font-display font-semibold uppercase leading-[0.9] tracking-[-0.055em] text-ivory;
   }
 
   .body-copy {
-    @apply font-body text-base leading-[1.75] text-cream/65 sm:text-lg;
+    @apply font-body text-base leading-[1.75] text-ivory/70 sm:text-lg;
   }
 
   .clip-corner {
@@ -159,7 +159,52 @@ html.lenis body {
   }
 
   .hairline {
-    @apply border-cream/10;
+    @apply border-ivory/15;
+  }
+
+  .section-dark {
+    background-color: var(--navy);
+    color: var(--ivory);
+  }
+
+  .section-light {
+    background-color: var(--ivory);
+    color: var(--navy);
+  }
+
+  .section-light .eyebrow {
+    color: var(--navy);
+  }
+
+  .section-light .eyebrow-line {
+    background-color: var(--gold);
+  }
+
+  .section-light .display-title {
+    color: var(--navy);
+  }
+
+  .section-light .body-copy {
+    color: rgba(32, 44, 60, 0.76);
+  }
+
+  .section-light .hairline {
+    border-color: rgba(32, 44, 60, 0.18);
+  }
+
+  .section-light .stroke-text {
+    -webkit-text-stroke-color: rgba(32, 44, 60, 0.26);
+  }
+
+  .marquee-control {
+    color: currentColor;
+    opacity: 0.6;
+    transition: opacity 200ms ease;
+  }
+
+  .marquee-control:hover,
+  .marquee-control:focus-visible {
+    opacity: 1;
   }
 
   .link-underline {
@@ -198,7 +243,7 @@ html.lenis body {
   }
 
   .stroke-text {
-    -webkit-text-stroke: 1px rgba(243, 238, 231, 0.32);
+    -webkit-text-stroke: 1px rgba(244, 239, 228, 0.32);
     color: transparent;
   }
 
@@ -215,11 +260,11 @@ html.lenis body {
   .hero-title-shimmer {
     background-image: linear-gradient(
       100deg,
-      #f3eee7 0%,
-      #f3eee7 36%,
-      #d8a07a 48%,
-      #f3eee7 60%,
-      #f3eee7 100%
+      #f4efe4 0%,
+      #f4efe4 36%,
+      #b59a65 48%,
+      #f4efe4 60%,
+      #f4efe4 100%
     );
     background-size: 240% 100%;
     background-position: 0% 50%;

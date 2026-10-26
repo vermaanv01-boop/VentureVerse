@@ -23,9 +23,12 @@ const PRINCIPLES = [
 
 export function About() {
   return (
-    <section id="about" className="relative z-10 scroll-mt-20">
+    <section
+      id="about"
+      className="section-light relative z-10 scroll-mt-20 bg-ivory"
+    >
       <div className="container-page section-pad">
-        <div className="grid gap-10 border-t border-cream/10 pt-10 lg:grid-cols-12 lg:gap-8 lg:pt-12">
+        <div className="grid gap-10 border-t border-navy/15 pt-10 lg:grid-cols-12 lg:gap-8 lg:pt-12">
           <div className="lg:col-span-6 xl:col-span-5">
             <p className="eyebrow mb-6">
               <span className="eyebrow-line" aria-hidden="true" />
@@ -75,19 +78,19 @@ export function About() {
               </p>
             </div>
 
-            <ul className="mt-9 border-t border-cream/10">
+            <ul className="mt-9 border-t border-navy/15">
               {PRINCIPLES.map((principle) => (
                 <li
                   key={principle.index}
-                  className="grid grid-cols-[2.4rem_1fr] gap-3 border-b border-cream/10 py-4 sm:grid-cols-[3.5rem_1fr_auto] sm:items-baseline"
+                  className="grid grid-cols-[2.4rem_1fr] gap-3 border-b border-navy/15 py-4 sm:grid-cols-[3.5rem_1fr_auto] sm:items-baseline"
                 >
-                  <span className="font-mono text-[10px] tracking-[0.16em] text-copper-light">
+                  <span className="font-mono text-[10px] tracking-[0.16em] text-navy/65">
                     {principle.index}
                   </span>
-                  <span className="font-display text-lg font-medium tracking-[-0.02em] text-cream">
+                  <span className="font-display text-lg font-medium tracking-[-0.02em] text-navy">
                     {principle.title}
                   </span>
-                  <span className="col-start-2 font-body text-sm leading-relaxed text-cream/45 sm:col-start-3 sm:max-w-[15rem] sm:text-right">
+                  <span className="col-start-2 font-body text-sm leading-relaxed text-navy/65 sm:col-start-3 sm:max-w-[15rem] sm:text-right">
                     {principle.detail}
                   </span>
                 </li>

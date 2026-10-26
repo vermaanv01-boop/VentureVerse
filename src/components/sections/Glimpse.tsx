@@ -128,10 +128,10 @@ export function Glimpse() {
   return (
     <section
       id="glimpse"
-      className="relative z-10 scroll-mt-20 overflow-hidden"
+      className="section-light relative z-10 scroll-mt-20 overflow-hidden bg-ivory"
     >
       <div className="container-page section-pad">
-        <div className="border-t border-cream/10 pt-10 text-center lg:pt-12">
+        <div className="border-t border-navy/15 pt-10 text-center lg:pt-12">
           <p className="eyebrow mb-6 justify-center">
             <span className="eyebrow-line" aria-hidden="true" />
             05 / The archive
@@ -184,7 +184,7 @@ export function Glimpse() {
                 return (
                   <div
                     key={item.index}
-                    className="clip-corner absolute overflow-hidden border border-cream/15 bg-surface shadow-lift transition-[transform,opacity,filter] duration-500 ease-out"
+                    className="clip-corner absolute overflow-hidden border border-navy/20 bg-navy shadow-panel transition-[transform,opacity,filter] duration-500 ease-out"
                     style={{
                       width: size.width,
                       height: size.height,
@@ -220,7 +220,7 @@ export function Glimpse() {
               <button
                 type="button"
                 onClick={() => move(-1)}
-                className="clip-corner group flex h-11 w-14 items-center justify-center bg-cream text-ink transition-colors duration-200 hover:bg-copper-light active:scale-95 sm:h-12 sm:w-16"
+                className="clip-corner group flex h-11 w-14 items-center justify-center bg-navy text-ivory transition-colors duration-200 hover:bg-gold hover:text-navy active:scale-95 sm:h-12 sm:w-16"
                 aria-label="Previous slide"
               >
                 <ArrowLeft
@@ -231,11 +231,11 @@ export function Glimpse() {
               </button>
 
               <div
-                className="clip-tag flex min-w-[6.5rem] items-center justify-center border border-cream/10 bg-surface px-5 py-2.5"
+                className="clip-tag flex min-w-[6.5rem] items-center justify-center border border-navy/15 bg-navy/[0.04] px-5 py-2.5"
                 aria-live="polite"
                 aria-atomic="true"
               >
-                <span className="font-mono text-[10px] tracking-[0.18em] text-copper-light">
+                <span className="font-mono text-[10px] tracking-[0.18em] text-navy">
                   {String(active + 1).padStart(2, "0")} /{" "}
                   {String(items.length).padStart(2, "0")}
                 </span>
@@ -244,7 +244,7 @@ export function Glimpse() {
               <button
                 type="button"
                 onClick={() => move(1)}
-                className="clip-corner group flex h-11 w-14 items-center justify-center bg-cream text-ink transition-colors duration-200 hover:bg-copper-light active:scale-95 sm:h-12 sm:w-16"
+                className="clip-corner group flex h-11 w-14 items-center justify-center bg-navy text-ivory transition-colors duration-200 hover:bg-gold hover:text-navy active:scale-95 sm:h-12 sm:w-16"
                 aria-label="Next slide"
               >
                 <ArrowRight
@@ -255,12 +255,12 @@ export function Glimpse() {
               </button>
             </div>
 
-            <p className="text-center font-mono text-[9px] uppercase tracking-[0.18em] text-cream/30">
+            <p className="text-center font-mono text-[9px] uppercase tracking-[0.18em] text-navy/55">
               Swipe, click a side card, or use the arrow keys
             </p>
           </div>
 
-          <p className="mx-auto mt-8 max-w-xl text-center font-body text-xs leading-relaxed text-cream/35">
+          <p className="mx-auto mt-8 max-w-xl text-center font-body text-xs leading-relaxed text-navy/50">
             Sixteen frames from the Venture Verse archive. Use the controls or
             swipe to move through the previous ceremonies.
           </p>

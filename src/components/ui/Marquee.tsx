@@ -186,7 +186,7 @@ export function Marquee<T>({
           onClick={() => setPaused((value) => !value)}
           aria-pressed={paused}
           aria-label={`${ariaLabel}: ${paused ? "play" : "pause"} motion`}
-          className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.2em] text-cream/45 transition-colors hover:text-copper-light"
+          className="marquee-control inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.2em]"
         >
           {paused ? (
             <Play size={12} aria-hidden="true" />

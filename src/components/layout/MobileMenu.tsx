@@ -64,7 +64,7 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
   return createPortal(
     <div
       id="mobile-navigation"
-      className="menu-enter fixed inset-0 z-[70] bg-ink lg:hidden"
+      className="menu-enter fixed inset-0 z-[70] bg-navy lg:hidden"
       role="dialog"
       aria-modal="true"
       aria-labelledby="mobile-menu-title"
@@ -73,13 +73,13 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
         ref={panelRef}
         className="flex h-[100dvh] flex-col overflow-y-auto"
       >
-        <div className="container-page flex h-[68px] shrink-0 items-center justify-between border-b border-cream/10">
+        <div className="container-page flex h-[68px] shrink-0 items-center justify-between border-b border-ivory/15">
           <BrandMark />
           <button
             ref={closeRef}
             type="button"
             onClick={onClose}
-            className="clip-corner flex h-10 w-10 items-center justify-center bg-cream/5 text-cream transition-colors hover:bg-cream/10"
+            className="clip-corner flex h-10 w-10 items-center justify-center bg-ivory/[0.07] text-ivory transition-colors hover:bg-ivory/[0.14] hover:text-gold"
             aria-label="Close menu"
           >
             <X size={18} aria-hidden="true" />
@@ -92,9 +92,9 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
               <span className="eyebrow-line" aria-hidden="true" />
               Navigation
             </p>
-            <ul className="border-t border-cream/10">
+            <ul className="border-t border-ivory/15">
               {NAV_LINKS.map((link, index) => (
-                <li key={link.href} className="border-b border-cream/10">
+                <li key={link.href} className="border-b border-ivory/15">
                   <a
                     href={link.href}
                     className="group flex items-center justify-between py-4"
@@ -105,16 +105,16 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
                     }}
                   >
                     <span className="flex items-baseline gap-4">
-                      <span className="font-mono text-[10px] text-copper-light">
+                      <span className="font-mono text-[10px] text-gold">
                         {String(index + 1).padStart(2, "0")}
                       </span>
-                      <span className="font-display text-3xl font-semibold uppercase tracking-[-0.04em] text-cream">
+                      <span className="font-display text-3xl font-semibold uppercase tracking-[-0.04em] text-ivory">
                         {link.label}
                       </span>
                     </span>
                     <ArrowUpRight
                       size={18}
-                      className="text-cream/35 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-copper-light"
+                      className="text-ivory/40 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-gold"
                       aria-hidden="true"
                     />
                   </a>
@@ -123,17 +123,17 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
             </ul>
           </div>
 
-          <div className="relative mt-14 overflow-hidden border-t border-cream/10 pt-8">
+          <div className="relative mt-14 overflow-hidden border-t border-ivory/15 pt-8">
             <div className="relative z-10">
-              <p className="font-display text-2xl font-medium tracking-[-0.03em] text-cream">
+              <p className="font-display text-2xl font-medium tracking-[-0.03em] text-ivory">
                 {SITE.tagline}
               </p>
-              <p className="mt-3 max-w-xs font-body text-sm leading-relaxed text-cream/50">
+              <p className="mt-3 max-w-xs font-body text-sm leading-relaxed text-ivory/60">
                 {SITE.description}
               </p>
               <a
                 href="#contact"
-                className="mt-8 inline-flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.2em] text-copper-light"
+                className="mt-8 inline-flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.2em] text-gold"
                 onClick={(event) => {
                   event.preventDefault();
                   onClose();

@@ -84,12 +84,12 @@ function Countdown({ targetDate }: { targetDate: string | null }) {
         {cells.map((cell) => (
           <div
             key={cell.label}
-            className="border border-cream/10 bg-ink/30 px-1 py-2.5 text-center"
+            className="border border-navy/15 bg-navy/[0.04] px-1 py-2.5 text-center"
           >
-            <div className="font-display text-xl font-medium leading-none text-cream sm:text-2xl">
+            <div className="font-display text-xl font-medium leading-none text-navy sm:text-2xl">
               {cell.value}
             </div>
-            <div className="mt-1.5 font-mono text-[8px] uppercase tracking-[0.16em] text-cream/40">
+            <div className="mt-1.5 font-mono text-[8px] uppercase tracking-[0.16em] text-navy/60">
               {cell.label}
             </div>
           </div>
@@ -155,9 +155,9 @@ export function Hero() {
         )
         .fromTo(
           ".hero-right-lines",
-          { borderColor: "rgba(243,238,231,0)" },
+          { borderColor: "rgba(32,44,60,0)" },
           {
-            borderColor: "rgba(243,238,231,0.2)",
+            borderColor: "rgba(32,44,60,0.2)",
             duration: 0.9,
           },
           0.5,
@@ -247,12 +247,12 @@ export function Hero() {
     <section
       id="home"
       ref={sectionRef}
-      className="relative z-10 flex min-h-[100svh] w-full items-center overflow-hidden pb-14 pt-28 sm:pb-16 lg:pb-20 lg:pt-32"
+      className="section-dark relative z-10 flex min-h-[100svh] w-full items-center overflow-hidden pb-14 pt-28 sm:pb-16 lg:pb-20 lg:pt-32"
     >
       <HeroVideo paused={filmPaused} />
 
       <div
-        className="hero-line-art pointer-events-none absolute right-[3%] top-[13%] z-0 hidden w-[320px] text-copper/55 lg:block xl:right-[8%] xl:w-[360px]"
+        className="hero-line-art pointer-events-none absolute right-[3%] top-[13%] z-0 hidden w-[320px] text-gold/55 lg:block xl:right-[8%] xl:w-[360px]"
         aria-hidden="true"
       >
         <div className="hero-line-art-inner">
@@ -264,14 +264,14 @@ export function Hero() {
         <div className="grid items-center gap-14 lg:grid-cols-[minmax(0,1fr)_330px] lg:gap-12 xl:grid-cols-[minmax(0,1fr)_360px] xl:gap-20">
           <div className="max-w-3xl">
             <div className="hero-brand mb-7 flex items-center gap-3 sm:mb-9">
-              <span className="h-1.5 w-1.5 shrink-0 bg-copper" aria-hidden="true" />
-              <span className="font-mono text-[10px] font-medium uppercase tracking-[0.24em] text-copper-light">
+              <span className="h-1.5 w-1.5 shrink-0 bg-gold" aria-hidden="true" />
+              <span className="font-mono text-[10px] font-medium uppercase tracking-[0.24em] text-gold">
                 {SITE.tagline}
               </span>
             </div>
 
             <h1
-              className="font-display text-[clamp(4.1rem,10vw,9rem)] font-semibold uppercase leading-[0.82] tracking-[-0.065em] text-cream"
+              className="font-display text-[clamp(4.1rem,10vw,9rem)] font-semibold uppercase leading-[0.82] tracking-[-0.065em] text-ivory"
               aria-label={SITE.name}
             >
               <span className="block overflow-hidden pb-[0.06em]">
@@ -279,14 +279,14 @@ export function Hero() {
               </span>
               <span className="block overflow-hidden pb-[0.08em] sm:ml-[0.32em]">
                 <span className="hero-title-word hero-title-shimmer block">
-                  Verse<span className="text-copper">.</span>
+                  Verse<span className="text-gold">.</span>
                 </span>
               </span>
             </h1>
 
             <div className="mt-7 max-w-xl sm:mt-9">
               <h2
-                className="text-base font-normal leading-relaxed text-cream/85 sm:text-lg"
+                className="text-base font-normal leading-relaxed text-ivory/90 sm:text-lg"
                 aria-label={SITE.subtitle}
               >
                 <RevealWords
@@ -294,16 +294,16 @@ export function Hero() {
                   itemClass="hero-subtitle-word"
                 />
               </h2>
-              <p className="hero-copy mt-4 max-w-md font-body text-sm leading-[1.75] text-cream/50 sm:text-base">
+              <p className="hero-copy mt-4 max-w-md font-body text-sm leading-[1.75] text-ivory/60 sm:text-base">
                 A student-led community for builders, designers, operators, and
                 researchers turning curiosity into momentum.
               </p>
             </div>
           </div>
 
-          <article className="w-full max-w-[340px] justify-self-center lg:mb-8 lg:justify-self-end">
+          <article className="clip-corner w-full max-w-[340px] justify-self-center border border-gold/40 bg-ivory p-5 text-navy shadow-lift lg:mb-8 lg:justify-self-end">
             <h3
-              className="hero-right-lines flex justify-center overflow-hidden border-y border-cream/20 py-2.5 text-center"
+              className="hero-right-lines flex justify-center overflow-hidden border-y border-navy/20 py-2.5 text-center"
               aria-label="Time Remaining"
             >
               <RevealWords
@@ -316,7 +316,7 @@ export function Hero() {
               <Countdown targetDate={SITE.eventDate} />
             </div>
             <p
-              className="flex justify-center pb-4 text-center font-display text-base uppercase tracking-[0.1em] text-cream/80 sm:text-lg"
+              className="flex justify-center pb-4 text-center font-display text-base uppercase tracking-[0.1em] text-navy/85 sm:text-lg"
               aria-label={SITE.eventDateLabel}
             >
               <RevealWords
@@ -326,11 +326,15 @@ export function Hero() {
               />
             </p>
             <div className="hero-cta mt-1 flex justify-center">
-              <ClipButton href="#events" className="w-full justify-center">
+              <ClipButton
+                href="#events"
+                variant="invert"
+                className="w-full justify-center"
+              >
                 Explore events
               </ClipButton>
             </div>
-            <p className="mt-4 text-center font-mono text-[9px] uppercase tracking-[0.18em] text-cream/30">
+            <p className="mt-4 text-center font-mono text-[9px] uppercase tracking-[0.18em] text-navy/55">
               Registration details to follow
             </p>
           </article>
@@ -338,7 +342,7 @@ export function Hero() {
       </div>
 
       <div className="absolute bottom-4 right-4 z-20 flex items-center gap-3 sm:bottom-6 sm:right-6">
-        <span className="hidden font-mono text-[8px] uppercase tracking-[0.2em] text-cream/30 sm:block">
+        <span className="hidden font-mono text-[8px] uppercase tracking-[0.2em] text-ivory/45 sm:block">
           Background film
         </span>
         <button
@@ -348,7 +352,7 @@ export function Hero() {
           aria-label={
             filmPaused ? "Play background film" : "Pause background film"
           }
-          className="flex h-9 w-9 items-center justify-center border border-cream/15 bg-ink/70 text-cream/65 transition-colors hover:border-copper/45 hover:text-cream"
+          className="flex h-9 w-9 items-center justify-center border border-ivory/20 bg-navy/80 text-ivory/70 transition-colors hover:border-gold/60 hover:text-gold"
         >
           {filmPaused ? (
             <Play size={12} aria-hidden="true" />

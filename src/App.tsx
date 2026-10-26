@@ -21,7 +21,7 @@ export default function App() {
       <Nav />
       <main id="main" tabIndex={-1} className="outline-none">
         <Hero />
-        <div className="relative z-10 bg-ink">
+        <div className="relative z-10 bg-navy">
           <About />
           <ExploreEvents />
           <Sponsors />

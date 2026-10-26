@@ -23,8 +23,8 @@ export function Nav() {
       <header
         className={`fixed inset-x-0 top-0 z-50 border-b transition-colors duration-500 ${
           scrolled
-            ? "border-cream/10 bg-ink/85 backdrop-blur-xl"
-            : "border-transparent bg-ink/20 backdrop-blur-sm"
+            ? "border-ivory/15 bg-navy/95 backdrop-blur-xl"
+            : "border-transparent bg-navy/30 backdrop-blur-sm"
         }`}
       >
         <nav
@@ -48,7 +48,7 @@ export function Nav() {
               <a
                 key={link.href}
                 href={link.href}
-                className="link-underline font-mono text-[10px] font-medium uppercase tracking-[0.18em] text-cream/65 transition-colors duration-300 hover:text-cream"
+                className="link-underline font-mono text-[10px] font-medium uppercase tracking-[0.18em] text-ivory/70 transition-colors duration-300 hover:text-gold"
                 onClick={(event) => {
                   event.preventDefault();
                   scrollToSection(link.href);
@@ -68,7 +68,7 @@ export function Nav() {
             </ClipButton>
             <button
               type="button"
-              className="clip-corner flex h-10 w-10 items-center justify-center bg-copper text-ink transition-colors hover:bg-cream lg:hidden"
+              className="clip-corner flex h-10 w-10 items-center justify-center bg-gold text-navy transition-colors hover:bg-ivory lg:hidden"
               onClick={() => setMenuOpen(true)}
               aria-label="Open menu"
               aria-expanded={menuOpen}

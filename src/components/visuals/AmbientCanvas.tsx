@@ -49,7 +49,7 @@ export function AmbientCanvas() {
           }
         }
 
-        context.strokeStyle = `rgba(182, 106, 69, ${Math.max(alpha, 0.035)})`;
+        context.strokeStyle = `rgba(181, 154, 101, ${Math.max(alpha, 0.035)})`;
         context.lineWidth = 1;
         context.stroke();
       }

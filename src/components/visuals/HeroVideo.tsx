@@ -50,8 +50,8 @@ export function HeroVideo({ paused }: { paused: boolean }) {
           <source src="/videos/venture-background.mp4" type="video/mp4" />
         </video>
       ) : null}
-      <div className="absolute inset-0 bg-gradient-to-b from-ink/92 via-ink/60 to-ink" />
-      <div className="absolute inset-0 bg-copper/5" />
+      <div className="absolute inset-0 bg-gradient-to-b from-navy/95 via-navy/65 to-navy" />
+      <div className="absolute inset-0 bg-gold/5" />
     </div>
   );
 }

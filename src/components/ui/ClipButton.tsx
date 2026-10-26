@@ -6,7 +6,7 @@ type ClipButtonProps = {
   children: ReactNode;
   href?: string;
   onClick?: () => void;
-  variant?: "solid" | "ghost";
+  variant?: "solid" | "ghost" | "light" | "invert";
   className?: string;
   showArrow?: boolean;
   ariaLabel?: string;
@@ -23,11 +23,15 @@ export function ClipButton({
   ariaLabel,
   type = "button",
 }: ClipButtonProps) {
-  const classes = `clip-button group inline-flex h-12 items-center justify-center gap-3 px-7 font-mono text-[10px] font-medium uppercase tracking-[0.18em] transition-colors duration-300 ${
-    variant === "solid"
-      ? "bg-copper text-ink hover:bg-cream"
-      : "bg-cream/[0.06] text-cream hover:bg-cream/[0.12] hover:text-copper-light"
-  } ${className}`;
+  const variants = {
+    solid: "bg-gold text-navy hover:bg-ivory",
+    ghost:
+      "bg-ivory/[0.07] text-ivory hover:bg-ivory/[0.14] hover:text-gold",
+    light: "bg-navy/[0.07] text-navy hover:bg-navy hover:text-ivory",
+    invert: "bg-navy text-ivory hover:bg-gold hover:text-navy",
+  };
+
+  const classes = `clip-button group inline-flex h-12 items-center justify-center gap-3 px-7 font-mono text-[10px] font-medium uppercase tracking-[0.18em] transition-colors duration-300 ${variants[variant]} ${className}`;
 
   const content = (
     <>
