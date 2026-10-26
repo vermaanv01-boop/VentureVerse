@@ -219,9 +219,10 @@ export function Glimpse() {
           <div className="mt-8 flex flex-col items-center gap-6 sm:mt-10">
             <div className="flex items-center justify-center gap-5 sm:gap-8">
               <button
+                id="glimpses-prev-btn"
                 type="button"
                 onClick={() => move(-1)}
-                className="clip-corner group flex h-11 w-14 items-center justify-center bg-navy text-ivory transition-colors duration-200 hover:bg-gold hover:text-navy active:scale-95 sm:h-12 sm:w-16"
+                className="clip-corner group flex h-11 w-14 cursor-pointer items-center justify-center bg-navy text-ivory transition-colors duration-200 hover:bg-gold hover:text-navy active:scale-95 sm:h-12 sm:w-16"
                 aria-label="Previous slide"
               >
                 <ArrowLeft
@@ -243,9 +244,10 @@ export function Glimpse() {
               </div>
 
               <button
+                id="glimpses-next-btn"
                 type="button"
                 onClick={() => move(1)}
-                className="clip-corner group flex h-11 w-14 items-center justify-center bg-navy text-ivory transition-colors duration-200 hover:bg-gold hover:text-navy active:scale-95 sm:h-12 sm:w-16"
+                className="clip-corner group flex h-11 w-14 cursor-pointer items-center justify-center bg-navy text-ivory transition-colors duration-200 hover:bg-gold hover:text-navy active:scale-95 sm:h-12 sm:w-16"
                 aria-label="Next slide"
               >
                 <ArrowRight

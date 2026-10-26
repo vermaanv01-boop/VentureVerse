@@ -35,7 +35,7 @@ export const NAV_LINKS: NavLink[] = [
   { label: "Events", href: "#events" },
   { label: "Schedule", href: "#roadmap" },
   { label: "Glimpses", href: "#glimpses" },
-  { label: "Contact", href: "/contact.html" },
+  { label: "Contact", href: "#contact" },
 ];
 
 export const FOOTER_LINKS: NavLink[] = [
@@ -44,7 +44,7 @@ export const FOOTER_LINKS: NavLink[] = [
   { label: "Events", href: "#events" },
   { label: "Schedule", href: "#roadmap" },
   { label: "Glimpses", href: "#glimpses" },
-  { label: "Contact", href: "/contact.html" },
+  { label: "Contact", href: "#contact" },
 ];
 
 export type SocialLink = {
@@ -74,6 +74,45 @@ export const SOCIAL_LINKS: SocialLink[] = [
 export const CONTACT_EMAILS = [
   { label: "General enquiries", address: "ventureverseoist@gmail.com" },
   { label: "Venture Craft", address: "venturecraft2025@gmail.com" },
+];
+
+export type ContactCard = {
+  title: string;
+  description: string;
+  note: string;
+  icon: "handshake" | "mic" | "message";
+  actionLabel?: string;
+  actionHref?: string;
+};
+
+export const CONTACT_CARDS: ContactCard[] = [
+  {
+    title: "Partnerships & Sponsorships",
+    description:
+      "Collaborate with Central India's premier student innovation platform. Brand integration, event arenas, and direct student outreach.",
+    note: "Open for 2026 Edition",
+    icon: "handshake",
+    actionLabel: "Partner with us",
+    actionHref: "mailto:ventureverseoist@gmail.com?subject=Partnership%20Enquiry",
+  },
+  {
+    title: "Keynotes & Industry Mentorship",
+    description:
+      "Share your journey with 1,500+ aspiring engineers, traders, and founders across CSBS & CSE departments.",
+    note: "Speaker nominations open",
+    icon: "mic",
+    actionLabel: "Speak at Venture Verse",
+    actionHref: "mailto:ventureverseoist@gmail.com?subject=Speaker%20Enquiry",
+  },
+  {
+    title: "Event & Ideathon Inquiries",
+    description:
+      "Have questions regarding Venture Craft, Mudra, Karvaan, or UNIFEST? Our organizing committee is here to assist.",
+    note: "Direct coordinator desk",
+    icon: "message",
+    actionLabel: "Ask a question",
+    actionHref: "mailto:ventureverseoist@gmail.com?subject=General%20Enquiry",
+  },
 ];
 
 export type EventItem = {

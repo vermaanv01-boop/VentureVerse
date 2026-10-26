@@ -1,11 +1,12 @@
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
-import { Pause, Play } from "lucide-react";
+import { ArrowUpRight, Pause, Play } from "lucide-react";
 import { gsap } from "../../lib/gsap";
 import { FLAGSHIP_EVENTS, REGISTRATION_URL, SITE } from "../../data/site";
 import { usePrefersReducedMotion } from "../../hooks/usePrefersReducedMotion";
 import { HeroVideo } from "../visuals/HeroVideo";
 import { LineArt } from "../visuals/LineArt";
 import { ClipButton } from "../ui/ClipButton";
+import { Countdown } from "../ui/Countdown";
 
 function RevealWords({
   text,
@@ -229,10 +230,23 @@ export function Hero() {
                   itemClass="hero-subtitle-word"
                 />
               </h2>
-              <p className="hero-copy mt-4 max-w-md font-body text-sm leading-[1.75] text-ivory/70 sm:text-base">
-                A student-led community for builders, designers, operators, and
-                researchers turning curiosity into momentum.
+              <p className="hero-copy mt-4 max-w-lg font-body text-sm leading-[1.75] text-ivory/70 sm:text-base">
+                The flagship annual techno-management festival organized by the
+                Department of CSBS &amp; CSE, Oriental Group of Institutes,
+                Bhopal.
               </p>
+              <div className="hero-copy mt-8 flex flex-wrap items-center gap-4">
+                <ClipButton href="#events" variant="solid" className="!h-11 !px-6">
+                  Explore events
+                </ClipButton>
+                <ClipButton
+                  href={REGISTRATION_URL}
+                  variant="ghost"
+                  className="!h-11 !px-6"
+                >
+                  Register Now
+                </ClipButton>
+              </div>
             </div>
           </div>
 
@@ -260,7 +274,7 @@ export function Hero() {
                 className="justify-center"
               />
             </p>
-            <div className="hero-cta mt-1 flex justify-center">
+            <div className="hero-cta mt-1 flex flex-col gap-2.5">
               <ClipButton
                 href="#events"
                 variant="invert"
@@ -268,9 +282,18 @@ export function Hero() {
               >
                 Explore events
               </ClipButton>
+              <a
+                href={REGISTRATION_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="clip-tag inline-flex items-center justify-center gap-2 border border-navy/20 bg-navy/5 py-2.5 font-mono text-[9px] uppercase tracking-[0.16em] text-navy transition-colors hover:bg-gold hover:border-gold hover:text-navy"
+              >
+                <span>Register on Google Form</span>
+                <ArrowUpRight size={12} aria-hidden="true" />
+              </a>
             </div>
-            <p className="mt-4 text-center font-mono text-[9px] uppercase tracking-[0.18em] text-navy/70">
-              Registration details to follow
+            <p className="mt-3 text-center font-mono text-[9px] uppercase tracking-[0.18em] text-navy/70">
+              Flagship Arenas Open for 2026
             </p>
           </article>
         </div>

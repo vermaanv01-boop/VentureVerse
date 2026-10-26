@@ -32,7 +32,7 @@ export function Speakers() {
 
       <div className="mt-12 sm:mt-16">
         <Marquee
-          items={SPEAKERS}
+          items={[...SPEAKERS, ...SPEAKERS]}
           ariaLabel="Past Venture Verse speakers and guests"
           speed={22}
           mask

@@ -3,6 +3,7 @@ import { Footer } from "./components/layout/Footer";
 import { Nav } from "./components/layout/Nav";
 import { About } from "./components/sections/About";
 import { Contact } from "./components/sections/Contact";
+import { Events } from "./components/sections/Events";
 import { ExploreEvents } from "./components/sections/ExploreEvents";
 import { Glimpse } from "./components/sections/Glimpse";
 import { Hero } from "./components/sections/Hero";
@@ -23,6 +24,7 @@ export default function App() {
         <Hero />
         <div className="relative z-10 bg-navy">
           <About />
+          <Events />
           <ExploreEvents />
           <Sponsors />
           <Speakers />

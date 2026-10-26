@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { Menu } from "lucide-react";
-import { NAV_LINKS } from "../../data/site";
+import { NAV_LINKS, REGISTRATION_URL } from "../../data/site";
 import { scrollToSection } from "../../lib/scroll";
 import { BrandMark } from "../ui/BrandMark";
 import { ClipButton } from "../ui/ClipButton";
@@ -50,8 +50,10 @@ export function Nav() {
                 href={link.href}
                 className="link-underline font-mono text-[10px] font-medium uppercase tracking-[0.18em] text-ivory/70 transition-colors duration-300 hover:text-gold"
                 onClick={(event) => {
-                  event.preventDefault();
-                  scrollToSection(link.href);
+                  if (link.href.startsWith("#")) {
+                    event.preventDefault();
+                    scrollToSection(link.href);
+                  }
                 }}
               >
                 {link.label}
@@ -61,10 +63,11 @@ export function Nav() {
 
           <div className="flex items-center gap-3">
             <ClipButton
-              href="#contact"
+              href={REGISTRATION_URL}
+              variant="solid"
               className="!hidden !h-10 !px-5 sm:!inline-flex"
             >
-              Get involved
+              Register Now
             </ClipButton>
             <button
               type="button"

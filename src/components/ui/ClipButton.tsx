@@ -11,6 +11,8 @@ type ClipButtonProps = {
   showArrow?: boolean;
   ariaLabel?: string;
   type?: "button" | "submit";
+  target?: string;
+  rel?: string;
 };
 
 export function ClipButton({
@@ -22,6 +24,8 @@ export function ClipButton({
   showArrow = true,
   ariaLabel,
   type = "button",
+  target,
+  rel,
 }: ClipButtonProps) {
   const variants = {
     solid: "bg-gold text-navy hover:bg-ivory",
@@ -48,11 +52,14 @@ export function ClipButton({
   );
 
   if (href) {
+    const isExternal = href.startsWith("http") || href.startsWith("mailto:") || href.startsWith("tel:");
     return (
       <a
         href={href}
         className={classes}
         aria-label={ariaLabel}
+        target={target || (isExternal && !href.startsWith("mailto:") && !href.startsWith("tel:") ? "_blank" : undefined)}
+        rel={rel || (isExternal ? "noopener noreferrer" : undefined)}
         onClick={(event) => {
           if (href.startsWith("#")) {
             event.preventDefault();

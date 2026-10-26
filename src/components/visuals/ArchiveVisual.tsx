@@ -4,10 +4,12 @@ export function ArchiveVisual({
   item,
   active,
   priority,
+  total = 16,
 }: {
   item: ArchiveItem;
   active: boolean;
   priority: boolean;
+  total?: number;
 }) {
   return (
     <div className="relative h-full w-full overflow-hidden bg-navy">

@@ -50,7 +50,9 @@ export function Events() {
                         height={360}
                         loading={index < 2 ? "eager" : "lazy"}
                         decoding="async"
-                        className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                        className={`h-full w-full transition-transform duration-700 ease-out group-hover:scale-105 ${
+                          event.name === "UNIFEST" ? "object-contain p-2" : "object-cover"
+                        }`}
                       />
                     </span>
                     <div className="min-w-0">

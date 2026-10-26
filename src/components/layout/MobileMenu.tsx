@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 import { ArrowUpRight, X } from "lucide-react";
-import { NAV_LINKS, SITE } from "../../data/site";
+import { NAV_LINKS, REGISTRATION_URL, SITE } from "../../data/site";
 import { lockScroll, scrollToSection, unlockScroll } from "../../lib/scroll";
 import { BrandMark, Monogram } from "../ui/BrandMark";
 
@@ -131,18 +131,29 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
               <p className="mt-3 max-w-xs font-body text-sm leading-relaxed text-ivory/60">
                 {SITE.description}
               </p>
-              <a
-                href="#contact"
-                className="mt-8 inline-flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.2em] text-gold"
-                onClick={(event) => {
-                  event.preventDefault();
-                  onClose();
-                  window.setTimeout(() => scrollToSection("#contact"), 40);
-                }}
-              >
-                Start a conversation
-                <ArrowUpRight size={14} aria-hidden="true" />
-              </a>
+              <div className="mt-8 flex flex-col gap-3">
+                <a
+                  href={REGISTRATION_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="clip-tag inline-flex items-center justify-between border border-gold bg-gold px-5 py-3 font-mono text-[11px] font-semibold uppercase tracking-[0.18em] text-navy transition-colors hover:bg-ivory"
+                >
+                  <span>Register for 2026</span>
+                  <ArrowUpRight size={15} aria-hidden="true" />
+                </a>
+                <a
+                  href="#contact"
+                  className="inline-flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.2em] text-gold/80 hover:text-gold"
+                  onClick={(event) => {
+                    event.preventDefault();
+                    onClose();
+                    window.setTimeout(() => scrollToSection("#contact"), 40);
+                  }}
+                >
+                  Start a conversation
+                  <ArrowUpRight size={14} aria-hidden="true" />
+                </a>
+              </div>
             </div>
             <Monogram className="pointer-events-none absolute -bottom-12 -right-5 h-48 w-48 opacity-[0.055]" />
           </div>
