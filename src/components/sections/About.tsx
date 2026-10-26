@@ -1,7 +1,171 @@
+import { useEffect, useRef, useState } from "react";
+import { Pause, Play, Volume2, VolumeX } from "lucide-react";
 import { FLAGSHIP_EVENTS, SITE } from "../../data/site";
 import { Reveal } from "../ui/Reveal";
 import { SectionTitle } from "../ui/SectionTitle";
 import { AboutVisual } from "../visuals/AboutVisual";
+
+function FestivalFilmPlayer() {
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const [isPlaying, setIsPlaying] = useState(true);
+  const [isMuted, setIsMuted] = useState(true);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    // Explicitly set DOM muted to satisfy browser autoplay security policies
+    video.muted = true;
+    video.defaultMuted = true;
+
+    const playVideo = () => {
+      const playPromise = video.play();
+      if (playPromise !== undefined) {
+        playPromise
+          .then(() => {
+            setIsPlaying(true);
+          })
+          .catch(() => {
+            setIsPlaying(false);
+          });
+      }
+    };
+
+    playVideo();
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          if (video.paused) {
+            playVideo();
+          }
+        }
+      },
+      { threshold: 0.2 },
+    );
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  const togglePlay = () => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    if (video.paused) {
+      video
+        .play()
+        .then(() => setIsPlaying(true))
+        .catch(() => {});
+    } else {
+      video.pause();
+      setIsPlaying(false);
+    }
+  };
+
+  const toggleSound = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    const video = videoRef.current;
+    if (!video) return;
+
+    video.muted = !video.muted;
+    setIsMuted(video.muted);
+
+    if (video.paused) {
+      video
+        .play()
+        .then(() => setIsPlaying(true))
+        .catch(() => {});
+    }
+  };
+
+  return (
+    <figure className="clip-corner group relative overflow-hidden border border-navy/20 bg-navy shadow-panel">
+      <div
+        ref={containerRef}
+        className="relative aspect-video w-full cursor-pointer bg-navy overflow-hidden"
+        onClick={togglePlay}
+      >
+        <video
+          ref={videoRef}
+          loop
+          playsInline
+          preload="auto"
+          poster="/images/hero-poster.jpg"
+          className="h-full w-full object-cover"
+          aria-label="Venture Verse festival film"
+          onPlay={() => setIsPlaying(true)}
+          onPause={() => setIsPlaying(false)}
+        >
+          <source src="/videos/venture-background.mp4" type="video/mp4" />
+          Your browser does not support the video element.
+        </video>
+
+        {/* Play/Pause Center Indicator on hover / pause */}
+        <div
+          className={`pointer-events-none absolute inset-0 flex items-center justify-center transition-opacity duration-300 ${
+            !isPlaying
+              ? "bg-navy/40 opacity-100"
+              : "opacity-0 group-hover:opacity-100"
+          }`}
+        >
+          <div className="flex h-14 w-14 items-center justify-center rounded-full border border-gold/60 bg-navy/85 text-gold shadow-lg backdrop-blur-sm transition-transform duration-200 group-hover:scale-110">
+            {isPlaying ? (
+              <Pause size={22} fill="currentColor" aria-hidden="true" />
+            ) : (
+              <Play
+                size={22}
+                fill="currentColor"
+                className="ml-1"
+                aria-hidden="true"
+              />
+            )}
+          </div>
+        </div>
+
+        {/* Bottom controls bar: Sound toggle & Status */}
+        <div className="absolute bottom-3 right-3 z-10 flex items-center gap-2">
+          <button
+            type="button"
+            onClick={toggleSound}
+            aria-pressed={!isMuted}
+            aria-label={isMuted ? "Unmute video" : "Mute video"}
+            className="flex items-center gap-2 rounded-sm border border-ivory/20 bg-navy/85 px-3 py-1.5 font-mono text-[9px] uppercase tracking-[0.16em] text-ivory/90 backdrop-blur-md transition-colors hover:border-gold hover:text-gold"
+          >
+            {isMuted ? (
+              <>
+                <VolumeX size={13} className="text-gold" aria-hidden="true" />
+                <span>Muted</span>
+              </>
+            ) : (
+              <>
+                <Volume2 size={13} className="text-gold" aria-hidden="true" />
+                <span>Sound On</span>
+              </>
+            )}
+          </button>
+        </div>
+      </div>
+
+      <figcaption className="flex flex-col gap-2 border-t border-ivory/15 bg-charcoal px-4 py-3 font-mono text-[8px] uppercase tracking-[0.18em] text-ivory/60 sm:flex-row sm:items-center sm:justify-between">
+        <span className="flex items-center gap-2">
+          <span
+            className={`h-1.5 w-1.5 rounded-full ${
+              isPlaying ? "bg-emerald-400 animate-pulse" : "bg-gold"
+            }`}
+            aria-hidden="true"
+          />
+          Venture Verse / Festival Film · venture-background
+        </span>
+        <span>Click video to {isPlaying ? "pause" : "play"} · Loop active</span>
+      </figcaption>
+    </figure>
+  );
+}
 
 export function About() {
   return (
@@ -108,29 +272,7 @@ export function About() {
             </div>
 
             <div className="lg:col-span-8">
-              <figure className="clip-corner overflow-hidden border border-navy/20 bg-navy shadow-panel">
-                <video
-                  autoPlay
-                  loop
-                  muted
-                  controls
-                  playsInline
-                  preload="metadata"
-                  poster="/images/hero-poster.jpg"
-                  className="aspect-video w-full bg-navy object-cover"
-                  aria-label="Venture Verse festival film"
-                >
-                  <source
-                    src="/videos/venture-background.mp4"
-                    type="video/mp4"
-                  />
-                  Your browser does not support the video element.
-                </video>
-                <figcaption className="flex flex-col gap-2 border-t border-ivory/15 bg-charcoal px-4 py-3 font-mono text-[8px] uppercase tracking-[0.18em] text-ivory/60 sm:flex-row sm:items-center sm:justify-between">
-                  <span>Venture Verse / Festival film</span>
-                  <span>Cinematic Reel · venture-background</span>
-                </figcaption>
-              </figure>
+              <FestivalFilmPlayer />
             </div>
           </div>
         </Reveal>
