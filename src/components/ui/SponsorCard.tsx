@@ -19,7 +19,7 @@ export function SponsorCard({ sponsor }: { sponsor: Sponsor }) {
           width={sponsor.width}
           height={sponsor.height}
           alt={`${sponsor.name} sponsor logo`}
-          loading="lazy"
+          loading="eager"
           decoding="async"
           draggable={false}
           className="max-h-full w-auto max-w-full object-contain transition-transform duration-500 ease-out group-hover:scale-[1.03]"
