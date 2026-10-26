@@ -126,7 +126,10 @@ export function Glimpse() {
   };
 
   return (
-    <section id="glimpse" className="relative z-10 scroll-mt-20">
+    <section
+      id="glimpse"
+      className="relative z-10 scroll-mt-20 overflow-hidden"
+    >
       <div className="container-page section-pad">
         <div className="border-t border-cream/10 pt-10 text-center lg:pt-12">
           <p className="eyebrow mb-6 justify-center">
@@ -147,6 +150,7 @@ export function Glimpse() {
         <div
           className="mx-auto mt-14 w-full sm:mt-20"
           style={{ maxWidth: "min(860px, 92vw)" }}
+          onKeyDown={handleKeyDown}
         >
           <div
             ref={viewportRef}
@@ -156,7 +160,6 @@ export function Glimpse() {
               aspectRatio: size.height ? undefined : "16 / 9",
               perspective: size.width ? size.width * 3.6 : 1400,
             }}
-            onKeyDown={handleKeyDown}
             onTouchStart={handleTouchStart}
             onTouchEnd={handleTouchEnd}
             tabIndex={0}
