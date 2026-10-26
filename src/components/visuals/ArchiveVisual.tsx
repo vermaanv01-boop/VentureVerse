@@ -53,7 +53,7 @@ export function ArchiveVisual({
             The archive
           </p>
         </div>
-        <span className="hidden font-mono text-[9px] uppercase tracking-[0.18em] text-ivory/50 sm:block">
+        <span className="hidden font-mono text-[9px] uppercase tracking-[0.18em] text-ivory/65 sm:block">
           {item.index} / 16
         </span>
       </div>

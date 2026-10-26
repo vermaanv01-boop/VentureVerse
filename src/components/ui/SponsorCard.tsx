@@ -4,7 +4,7 @@ export function SponsorCard({ sponsor }: { sponsor: Sponsor }) {
   return (
     <article className="group relative mx-2 w-[286px] shrink-0 border border-navy/15 bg-ivory transition-colors duration-500 hover:border-gold sm:mx-3 sm:w-[340px]">
       <div className="flex items-center justify-between border-b border-navy/15 bg-navy px-4 py-2.5">
-        <span className="font-mono text-[8px] uppercase tracking-[0.2em] text-ivory/60">
+        <span className="font-mono text-[8px] uppercase tracking-[0.2em] text-ivory/70">
           VV / Partner
         </span>
         <span
