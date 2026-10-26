@@ -133,7 +133,8 @@ export function Marquee<T>({
     }
 
     const firstSet = firstSetRef.current;
-    if (!firstSet) return;
+    const track = trackRef.current;
+    if (!firstSet || !track) return;
 
     const setWidth = firstSet.getBoundingClientRect().width;
     if (setWidth > 0) {
@@ -143,7 +144,7 @@ export function Marquee<T>({
       while (offsetRef.current > 0) {
         offsetRef.current -= setWidth;
       }
-      trackRef.current.style.transform = `translate3d(${offsetRef.current}px, 0, 0)`;
+      track.style.transform = `translate3d(${offsetRef.current}px, 0, 0)`;
     }
   };
 
