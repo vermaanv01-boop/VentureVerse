@@ -1,8 +1,8 @@
-import { PARTNER_SLOTS } from "../../data/site";
+import { SPONSOR_MARQUEE } from "../../data/site";
 import { ClipButton } from "../ui/ClipButton";
 import { Marquee } from "../ui/Marquee";
-import { PartnerCard } from "../ui/PartnerCard";
 import { SectionTitle } from "../ui/SectionTitle";
+import { SponsorCard } from "../ui/SponsorCard";
 
 export function Sponsors() {
   return (
@@ -20,28 +20,26 @@ export function Sponsors() {
             />
           </div>
           <p className="body-copy max-w-sm text-sm lg:pb-2 lg:text-right">
-            The partner archive is being assembled. Sponsor slots for the next
-            edition are open.
+            The partners who helped bring the previous Venture Verse edition to
+            life.
           </p>
         </div>
       </div>
 
       <div className="mt-12 sm:mt-16">
         <Marquee
-          items={PARTNER_SLOTS}
-          ariaLabel="Sponsor placeholders"
-          speed={24}
+          items={SPONSOR_MARQUEE}
+          ariaLabel="Venture Verse sponsor logos"
+          speed={26}
           mask
-          renderItem={(slot, index) => (
-            <PartnerCard slot={slot} variant={index} />
-          )}
+          renderItem={(sponsor) => <SponsorCard sponsor={sponsor} />}
         />
       </div>
 
       <div className="container-page mt-12">
         <div className="flex flex-col gap-5 border-t border-cream/10 pt-6 sm:flex-row sm:items-center sm:justify-between">
           <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-cream/30">
-            Sponsor line-up to be announced
+            Selected partners from the Venture Verse archive
           </p>
           <ClipButton href="#contact" variant="ghost" className="!h-10 !px-5">
             Become a partner
