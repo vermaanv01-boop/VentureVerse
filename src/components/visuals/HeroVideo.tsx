@@ -44,13 +44,13 @@ export function HeroVideo({ paused }: { paused: boolean }) {
           onLoadedData={() => setReady(true)}
           onError={() => setFailed(true)}
           className={`absolute inset-0 h-full w-full object-cover object-center transition-opacity duration-1000 ${
-            ready ? "opacity-60" : "opacity-0"
+            ready ? "opacity-45" : "opacity-0"
           }`}
         >
           <source src="/videos/venture-background.mp4" type="video/mp4" />
         </video>
       ) : null}
-      <div className="absolute inset-0 bg-gradient-to-b from-ink/80 via-ink/30 to-ink" />
+      <div className="absolute inset-0 bg-gradient-to-b from-ink/92 via-ink/60 to-ink" />
       <div className="absolute inset-0 bg-copper/5" />
     </div>
   );
