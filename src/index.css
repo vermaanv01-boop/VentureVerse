@@ -19,6 +19,26 @@ html {
   background: var(--ink);
 }
 
+.skip-link {
+  position: fixed;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 100;
+  transform: translateY(-180%);
+  background: var(--cream);
+  color: var(--ink);
+  padding: 0.65rem 0.9rem;
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  transition: transform 200ms ease;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
 body {
   margin: 0;
   min-width: 320px;
@@ -217,6 +237,50 @@ html.lenis body {
   }
 }
 
+.menu-enter {
+  animation: menu-enter 380ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.about-orbit {
+  transform-box: view-box;
+  animation: about-orbit 48s linear infinite;
+}
+
+.about-scan {
+  left: 8%;
+  animation: about-scan 7s ease-in-out infinite;
+}
+
+@keyframes menu-enter {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes about-orbit {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes about-scan {
+  0%,
+  100% {
+    left: 8%;
+    opacity: 0;
+  }
+  12%,
+  88% {
+    opacity: 1;
+  }
+  50% {
+    left: 88%;
+  }
+}
+
 @keyframes shimmer {
   0%,
   18% {
@@ -244,8 +308,20 @@ html.lenis body {
   }
 
   .hero-title-shimmer,
-  .poster-drift {
+  .poster-drift,
+  .menu-enter,
+  .about-orbit,
+  .about-scan {
     animation: none;
+  }
+
+  .hero-video-container {
+    position: absolute;
+  }
+
+  .about-scan {
+    left: 50%;
+    opacity: 0.35;
   }
 
   .hero-title-shimmer {

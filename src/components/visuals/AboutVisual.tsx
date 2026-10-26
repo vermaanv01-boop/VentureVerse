@@ -68,7 +68,7 @@ export function AboutVisual() {
         </div>
 
         <div className="absolute right-6 top-6 font-mono text-[9px] uppercase tracking-[0.18em] text-cream/35 sm:right-8 sm:top-8">
-          VV / 2026
+          VV / Identity
         </div>
 
         <div
@@ -77,7 +77,7 @@ export function AboutVisual() {
         />
       </div>
       <figcaption className="mt-4 flex items-center justify-between gap-4 font-mono text-[9px] uppercase tracking-[0.18em] text-cream/30">
-        <span>Club film — to be announced</span>
+        <span>Archive — in progress</span>
         <span>Visual identity / A</span>
       </figcaption>
     </figure>

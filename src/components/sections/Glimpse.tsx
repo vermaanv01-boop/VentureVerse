@@ -145,7 +145,7 @@ export function Glimpse() {
         </div>
 
         <div
-          className="mx-auto mt-14 w-full sm:mt-18"
+          className="mx-auto mt-14 w-full sm:mt-20"
           style={{ maxWidth: "min(860px, 92vw)" }}
         >
           <div
