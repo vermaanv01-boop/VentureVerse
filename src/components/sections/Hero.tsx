@@ -247,7 +247,7 @@ export function Hero() {
     <section
       id="home"
       ref={sectionRef}
-      className="section-dark relative z-10 flex min-h-[100svh] w-full items-center overflow-hidden pb-14 pt-28 sm:pb-16 lg:pb-20 lg:pt-32"
+      className="relative z-10 flex min-h-[100svh] w-full items-center overflow-hidden pb-14 pt-28 text-ivory sm:pb-16 lg:pb-20 lg:pt-32"
     >
       <HeroVideo paused={filmPaused} />
 
