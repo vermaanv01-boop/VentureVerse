@@ -1,4 +1,5 @@
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { Pause, Play } from "lucide-react";
 import { gsap } from "../../lib/gsap";
 import { SITE } from "../../data/site";
 import { usePrefersReducedMotion } from "../../hooks/usePrefersReducedMotion";
@@ -104,6 +105,11 @@ function Countdown({ targetDate }: { targetDate: string | null }) {
 export function Hero() {
   const sectionRef = useRef<HTMLElement | null>(null);
   const reduced = usePrefersReducedMotion();
+  const [filmPaused, setFilmPaused] = useState(reduced);
+
+  useEffect(() => {
+    if (reduced) setFilmPaused(true);
+  }, [reduced]);
 
   useLayoutEffect(() => {
     if (reduced || !sectionRef.current) return;
@@ -232,19 +238,6 @@ export function Hero() {
         },
       });
 
-      const about = document.querySelector("#about");
-      if (about) {
-        gsap.to(".hero-video-container", {
-          yPercent: -100,
-          ease: "none",
-          scrollTrigger: {
-            trigger: about,
-            start: "top bottom",
-            end: "top top",
-            scrub: true,
-          },
-        });
-      }
     }, section);
 
     return () => ctx.revert();
@@ -256,7 +249,7 @@ export function Hero() {
       ref={sectionRef}
       className="relative z-10 flex min-h-[100svh] w-full items-center overflow-hidden pb-14 pt-28 sm:pb-16 lg:pb-20 lg:pt-32"
     >
-      <HeroVideo />
+      <HeroVideo paused={filmPaused} />
 
       <div
         className="hero-line-art pointer-events-none absolute right-[3%] top-[13%] z-0 hidden w-[320px] text-copper/55 lg:block xl:right-[8%] xl:w-[360px]"
@@ -342,6 +335,27 @@ export function Hero() {
             </p>
           </article>
         </div>
+      </div>
+
+      <div className="absolute bottom-4 right-4 z-20 flex items-center gap-3 sm:bottom-6 sm:right-6">
+        <span className="hidden font-mono text-[8px] uppercase tracking-[0.2em] text-cream/30 sm:block">
+          Background film
+        </span>
+        <button
+          type="button"
+          onClick={() => setFilmPaused((value) => !value)}
+          aria-pressed={filmPaused}
+          aria-label={
+            filmPaused ? "Play background film" : "Pause background film"
+          }
+          className="flex h-9 w-9 items-center justify-center border border-cream/15 bg-ink/70 text-cream/65 transition-colors hover:border-copper/45 hover:text-cream"
+        >
+          {filmPaused ? (
+            <Play size={12} aria-hidden="true" />
+          ) : (
+            <Pause size={12} aria-hidden="true" />
+          )}
+        </button>
       </div>
     </section>
   );
