@@ -1,7 +1,7 @@
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { Pause, Play } from "lucide-react";
 import { gsap } from "../../lib/gsap";
-import { SITE } from "../../data/site";
+import { FLAGSHIP_EVENTS, REGISTRATION_URL, SITE } from "../../data/site";
 import { usePrefersReducedMotion } from "../../hooks/usePrefersReducedMotion";
 import { HeroVideo } from "../visuals/HeroVideo";
 import { LineArt } from "../visuals/LineArt";
@@ -34,71 +34,6 @@ function RevealWords({
         </span>
       ))}
     </span>
-  );
-}
-
-function Countdown({ targetDate }: { targetDate: string | null }) {
-  const [values, setValues] = useState({
-    days: "--",
-    hours: "--",
-    minutes: "--",
-    seconds: "--",
-  });
-
-  useEffect(() => {
-    if (!targetDate) return;
-
-    const target = new Date(targetDate).getTime();
-    if (Number.isNaN(target)) return;
-
-    const tick = () => {
-      const diff = Math.max(0, target - Date.now());
-      const days = Math.floor(diff / 86400000);
-      const hours = Math.floor((diff / 3600000) % 24);
-      const minutes = Math.floor((diff / 60000) % 60);
-      const seconds = Math.floor((diff / 1000) % 60);
-
-      setValues({
-        days: String(days).padStart(2, "0"),
-        hours: String(hours).padStart(2, "0"),
-        minutes: String(minutes).padStart(2, "0"),
-        seconds: String(seconds).padStart(2, "0"),
-      });
-    };
-
-    tick();
-    const interval = window.setInterval(tick, 1000);
-    return () => window.clearInterval(interval);
-  }, [targetDate]);
-
-  const cells = [
-    { label: "Days", value: values.days },
-    { label: "Hours", value: values.hours },
-    { label: "Mins", value: values.minutes },
-    { label: "Secs", value: values.seconds },
-  ];
-
-  return (
-    <div>
-      <div className="grid grid-cols-4 gap-1.5">
-        {cells.map((cell) => (
-          <div
-            key={cell.label}
-            className="border border-navy/15 bg-navy/[0.04] px-1 py-2.5 text-center"
-          >
-            <div className="font-display text-xl font-medium leading-none text-navy sm:text-2xl">
-              {cell.value}
-            </div>
-            <div className="mt-1.5 font-mono text-[8px] uppercase tracking-[0.16em] text-navy/70">
-              {cell.label}
-            </div>
-          </div>
-        ))}
-      </div>
-      <span className="sr-only">
-        Time remaining: {targetDate ? SITE.eventDateLabel : "dates to be announced"}.
-      </span>
-    </div>
   );
 }
 

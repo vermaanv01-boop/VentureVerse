@@ -127,23 +127,23 @@ export function Glimpse() {
 
   return (
     <section
-      id="glimpse"
+      id="glimpses"
       className="section-light relative z-10 scroll-mt-20 overflow-hidden bg-ivory"
     >
       <div className="container-page section-pad">
         <div className="border-t border-navy/15 pt-10 text-center lg:pt-12">
           <p className="eyebrow mb-6 justify-center">
             <span className="eyebrow-line" aria-hidden="true" />
-            05 / The archive
+            06 / The archive
             <span className="eyebrow-line" aria-hidden="true" />
           </p>
           <SectionTitle
-            text="Glimpse of Venture Verse"
+            text="Glimpses of Venture Verse"
             className="text-[clamp(2.6rem,6.5vw,5.8rem)]"
           />
           <p className="body-copy mx-auto mt-5 max-w-xl text-pretty">
-            A look back at the rooms, stages, and people that shaped the
-            previous Venture Verse ceremonies.
+            Experience the incredible energy, innovation, and legacy of Venture
+            Verse — a journey through our past editions.
           </p>
         </div>
 
@@ -165,7 +165,7 @@ export function Glimpse() {
             tabIndex={0}
             role="group"
             aria-roledescription="carousel"
-            aria-label="Glimpse of Venture Verse"
+            aria-label="Glimpses of Venture Verse"
           >
             <div
               className="relative h-full w-full"
@@ -201,6 +201,7 @@ export function Glimpse() {
                   >
                     <ArchiveVisual
                       item={item}
+                      total={items.length}
                       active={isActive}
                       priority={Math.abs(offset) <= 1}
                     />
