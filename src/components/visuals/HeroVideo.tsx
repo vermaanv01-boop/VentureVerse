@@ -38,7 +38,7 @@ export function HeroVideo({ paused }: { paused: boolean }) {
           loop
           muted
           playsInline
-          preload="auto"
+          preload={paused ? "none" : "auto"}
           poster="/images/hero-poster.jpg"
           disablePictureInPicture
           onLoadedData={() => setReady(true)}
