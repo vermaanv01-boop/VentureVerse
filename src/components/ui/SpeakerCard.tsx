@@ -70,13 +70,13 @@ export function SpeakerCard({ slot }: { slot: SpeakerSlot }) {
         </div>
 
         <div className="relative">
-          <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-ivory/45">
+          <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-ivory/65">
             {slot.role}
           </span>
           <h3 className="mt-2 max-w-[8ch] font-display text-[clamp(1.8rem,3vw,2.5rem)] font-medium leading-[0.95] tracking-[-0.04em] text-ivory">
             Name to be announced
           </h3>
-          <p className="mt-4 max-w-[15rem] font-body text-xs leading-relaxed text-ivory/50 transition-colors duration-500 sm:mt-5 sm:text-sm sm:text-ivory/0 sm:group-hover:text-ivory/50">
+          <p className="mt-4 max-w-[15rem] font-body text-xs leading-relaxed text-ivory/65 transition-colors duration-500 sm:mt-5 sm:text-sm sm:text-ivory/0 sm:group-hover:text-ivory/65">
             Profile, practice, and session details will be published with the
             speaker line-up.
           </p>

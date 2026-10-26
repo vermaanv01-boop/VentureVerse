@@ -84,13 +84,13 @@ export function About() {
                   key={principle.index}
                   className="grid grid-cols-[2.4rem_1fr] gap-3 border-b border-navy/15 py-4 sm:grid-cols-[3.5rem_1fr_auto] sm:items-baseline"
                 >
-                  <span className="font-mono text-[10px] tracking-[0.16em] text-navy/65">
+                  <span className="font-mono text-[10px] tracking-[0.16em] text-navy/75">
                     {principle.index}
                   </span>
                   <span className="font-display text-lg font-medium tracking-[-0.02em] text-navy">
                     {principle.title}
                   </span>
-                  <span className="col-start-2 font-body text-sm leading-relaxed text-navy/65 sm:col-start-3 sm:max-w-[15rem] sm:text-right">
+                  <span className="col-start-2 font-body text-sm leading-relaxed text-navy/75 sm:col-start-3 sm:max-w-[15rem] sm:text-right">
                     {principle.detail}
                   </span>
                 </li>

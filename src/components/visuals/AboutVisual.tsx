@@ -67,7 +67,7 @@ export function AboutVisual() {
           </div>
         </div>
 
-        <div className="absolute right-6 top-6 font-mono text-[9px] uppercase tracking-[0.18em] text-ivory/45 sm:right-8 sm:top-8">
+        <div className="absolute right-6 top-6 font-mono text-[9px] uppercase tracking-[0.18em] text-ivory/65 sm:right-8 sm:top-8">
           VV / Identity
         </div>
 
@@ -76,7 +76,7 @@ export function AboutVisual() {
           aria-hidden="true"
         />
       </div>
-      <figcaption className="mt-4 flex items-center justify-between gap-4 font-mono text-[9px] uppercase tracking-[0.18em] text-navy/55">
+      <figcaption className="mt-4 flex items-center justify-between gap-4 font-mono text-[9px] uppercase tracking-[0.18em] text-navy/70">
         <span>Archive — in progress</span>
         <span>Visual identity / A</span>
       </figcaption>

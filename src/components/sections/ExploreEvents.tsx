@@ -266,7 +266,7 @@ export function ExploreEvents() {
           ))}
         </ul>
 
-        <p className="mt-10 text-center font-mono text-[9px] uppercase tracking-[0.2em] text-ivory/50">
+        <p className="mt-10 text-center font-mono text-[9px] uppercase tracking-[0.2em] text-ivory/65">
           12 categories / Full programme and dates to be announced
         </p>
       </div>
