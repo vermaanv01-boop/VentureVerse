@@ -142,8 +142,8 @@ export function Glimpse() {
             className="text-[clamp(2.6rem,6.5vw,5.8rem)]"
           />
           <p className="body-copy mx-auto mt-5 max-w-xl text-pretty">
-            A first look at the world we are building: fragments of ideas,
-            prototypes, and the rooms where they take shape.
+            A look back at the rooms, stages, and people that shaped the
+            previous Venture Verse ceremonies.
           </p>
         </div>
 
@@ -183,7 +183,7 @@ export function Glimpse() {
 
                 return (
                   <div
-                    key={item.code}
+                    key={item.index}
                     className="clip-corner absolute overflow-hidden border border-cream/15 bg-surface shadow-lift transition-[transform,opacity,filter] duration-500 ease-out"
                     style={{
                       width: size.width,
@@ -199,10 +199,14 @@ export function Glimpse() {
                     }}
                     aria-hidden={!isActive}
                   >
-                    <ArchiveVisual item={item} variant={index} />
+                    <ArchiveVisual
+                      item={item}
+                      active={isActive}
+                      priority={Math.abs(offset) <= 1}
+                    />
                     {!isActive ? (
                       <span className="sr-only">
-                        Slide {index + 1}: {item.title}
+                        Slide {index + 1}: {item.alt}
                       </span>
                     ) : null}
                   </div>
@@ -257,8 +261,8 @@ export function Glimpse() {
           </div>
 
           <p className="mx-auto mt-8 max-w-xl text-center font-body text-xs leading-relaxed text-cream/35">
-            Archive photography and film will be added after each edition. Until
-            then, these fragments show the visual language of Venture Verse.
+            Sixteen frames from the Venture Verse archive. Use the controls or
+            swipe to move through the previous ceremonies.
           </p>
         </div>
       </div>
