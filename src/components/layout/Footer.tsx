@@ -15,7 +15,7 @@ export function Footer() {
             <p className="mt-7 max-w-xs font-display text-2xl font-medium leading-[1.05] tracking-[-0.03em] text-ivory/90 sm:text-3xl">
               {SITE.tagline}
             </p>
-            <p className="mt-4 max-w-sm font-body text-sm leading-relaxed text-ivory/55">
+            <p className="mt-4 max-w-sm font-body text-sm leading-relaxed text-ivory/65">
               {SITE.description}
             </p>
           </div>
@@ -48,7 +48,7 @@ export function Footer() {
             </p>
             <dl className="mt-5 space-y-4">
               <div>
-                <dt className="font-mono text-[8px] uppercase tracking-[0.18em] text-ivory/40">
+                <dt className="font-mono text-[8px] uppercase tracking-[0.18em] text-ivory/60">
                   Dates
                 </dt>
                 <dd className="mt-1 font-body text-sm text-ivory/70">
@@ -56,7 +56,7 @@ export function Footer() {
                 </dd>
               </div>
               <div>
-                <dt className="font-mono text-[8px] uppercase tracking-[0.18em] text-ivory/40">
+                <dt className="font-mono text-[8px] uppercase tracking-[0.18em] text-ivory/60">
                   Venue
                 </dt>
                 <dd className="mt-1 font-body text-sm text-ivory/70">
@@ -64,7 +64,7 @@ export function Footer() {
                 </dd>
               </div>
               <div>
-                <dt className="font-mono text-[8px] uppercase tracking-[0.18em] text-ivory/40">
+                <dt className="font-mono text-[8px] uppercase tracking-[0.18em] text-ivory/60">
                   Contact
                 </dt>
                 <dd className="mt-1 font-body text-sm text-ivory/70">
@@ -89,10 +89,10 @@ export function Footer() {
         </div>
 
         <div className="mt-16 flex flex-col gap-3 border-t border-ivory/10 py-6 sm:flex-row sm:items-center sm:justify-between">
-          <p className="font-mono text-[9px] uppercase tracking-[0.16em] text-ivory/45">
+          <p className="font-mono text-[9px] uppercase tracking-[0.16em] text-ivory/60">
             © {year} {SITE.name}
           </p>
-          <p className="font-mono text-[9px] uppercase tracking-[0.16em] text-ivory/45">
+          <p className="font-mono text-[9px] uppercase tracking-[0.16em] text-ivory/60">
             Built for the builders.
           </p>
         </div>

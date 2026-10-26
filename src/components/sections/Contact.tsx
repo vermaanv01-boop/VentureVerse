@@ -47,7 +47,7 @@ export function Contact() {
 
               <dl className="mt-7 border-t border-ivory/15">
                 <div className="flex items-center justify-between gap-4 border-b border-ivory/15 py-3">
-                  <dt className="font-mono text-[9px] uppercase tracking-[0.16em] text-ivory/45">
+                  <dt className="font-mono text-[9px] uppercase tracking-[0.16em] text-ivory/65">
                     Dates
                   </dt>
                   <dd className="text-right font-body text-xs text-ivory/70">
@@ -55,7 +55,7 @@ export function Contact() {
                   </dd>
                 </div>
                 <div className="flex items-center justify-between gap-4 border-b border-ivory/15 py-3">
-                  <dt className="font-mono text-[9px] uppercase tracking-[0.16em] text-ivory/45">
+                  <dt className="font-mono text-[9px] uppercase tracking-[0.16em] text-ivory/65">
                     Venue
                   </dt>
                   <dd className="text-right font-body text-xs text-ivory/70">
@@ -63,7 +63,7 @@ export function Contact() {
                   </dd>
                 </div>
                 <div className="flex items-center justify-between gap-4 py-3">
-                  <dt className="font-mono text-[9px] uppercase tracking-[0.16em] text-ivory/45">
+                  <dt className="font-mono text-[9px] uppercase tracking-[0.16em] text-ivory/65">
                     Contact
                   </dt>
                   <dd className="flex items-center gap-2 text-right font-body text-xs text-ivory/70">
@@ -76,7 +76,7 @@ export function Contact() {
                 </div>
               </dl>
 
-              <p className="mt-5 font-mono text-[9px] uppercase leading-relaxed tracking-[0.16em] text-ivory/50">
+              <p className="mt-5 font-mono text-[9px] uppercase leading-relaxed tracking-[0.16em] text-ivory/60">
                 No registration details have been published yet.
               </p>
             </div>
@@ -98,7 +98,7 @@ export function Contact() {
                         className="text-gold transition-colors duration-300 group-hover:text-ivory"
                         aria-hidden="true"
                       />
-                      <span className="font-mono text-[9px] tracking-[0.18em] text-ivory/35">
+                      <span className="font-mono text-[9px] tracking-[0.18em] text-ivory/60">
                         {String(index + 1).padStart(2, "0")}
                       </span>
                     </div>
@@ -115,7 +115,7 @@ export function Contact() {
                         className="h-1.5 w-1.5 shrink-0 bg-gold"
                         aria-hidden="true"
                       />
-                      <span className="font-mono text-[8px] uppercase tracking-[0.16em] text-ivory/50">
+                      <span className="font-mono text-[8px] uppercase tracking-[0.16em] text-ivory/60">
                         {card.note}
                       </span>
                     </div>
@@ -128,7 +128,7 @@ export function Contact() {
 
         <div className="mt-14 flex flex-col gap-6 border-t border-ivory/15 pt-7 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-ivory/50">
+            <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-ivory/60">
               In the meantime
             </p>
             <p className="mt-2 font-display text-xl font-medium tracking-[-0.02em] text-ivory/85">
