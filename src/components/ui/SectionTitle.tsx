@@ -38,7 +38,11 @@ export function SectionTitle({ text, className = "" }: SectionTitleProps) {
   }, [reduced, text]);
 
   return (
-    <h2 ref={ref} className={`display-title ${className}`}>
+    <h2
+      ref={ref}
+      className={`display-title ${className}`}
+      aria-label={text}
+    >
       <span className="inline-flex flex-wrap">
         {words.map((word, index) => (
           <span

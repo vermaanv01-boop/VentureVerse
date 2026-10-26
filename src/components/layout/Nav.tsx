@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Menu } from "lucide-react";
 import { NAV_LINKS } from "../../data/site";
 import { scrollToSection } from "../../lib/scroll";
@@ -9,6 +9,7 @@ import { MobileMenu } from "./MobileMenu";
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const closeMenu = useCallback(() => setMenuOpen(false), []);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 18);
@@ -79,7 +80,7 @@ export function Nav() {
         </nav>
       </header>
 
-      <MobileMenu open={menuOpen} onClose={() => setMenuOpen(false)} />
+      <MobileMenu open={menuOpen} onClose={closeMenu} />
     </>
   );
 }

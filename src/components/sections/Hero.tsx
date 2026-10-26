@@ -18,7 +18,10 @@ function RevealWords({
   const words = text.split(" ");
 
   return (
-    <span className={`inline-flex flex-wrap ${className}`}>
+    <span
+      className={`inline-flex flex-wrap ${className}`}
+      aria-hidden="true"
+    >
       {words.map((word, index) => (
         <span
           key={`${word}-${index}`}
@@ -274,7 +277,10 @@ export function Hero() {
               </span>
             </div>
 
-            <h1 className="font-display text-[clamp(4.1rem,10vw,9rem)] font-semibold uppercase leading-[0.82] tracking-[-0.065em] text-cream">
+            <h1
+              className="font-display text-[clamp(4.1rem,10vw,9rem)] font-semibold uppercase leading-[0.82] tracking-[-0.065em] text-cream"
+              aria-label={SITE.name}
+            >
               <span className="block overflow-hidden pb-[0.06em]">
                 <span className="hero-title-word block">Venture</span>
               </span>
@@ -286,7 +292,10 @@ export function Hero() {
             </h1>
 
             <div className="mt-7 max-w-xl sm:mt-9">
-              <h2 className="text-base font-normal leading-relaxed text-cream/85 sm:text-lg">
+              <h2
+                className="text-base font-normal leading-relaxed text-cream/85 sm:text-lg"
+                aria-label={SITE.subtitle}
+              >
                 <RevealWords
                   text={SITE.subtitle}
                   itemClass="hero-subtitle-word"
@@ -300,7 +309,10 @@ export function Hero() {
           </div>
 
           <article className="w-full max-w-[340px] justify-self-center lg:mb-8 lg:justify-self-end">
-            <h3 className="hero-right-lines flex justify-center overflow-hidden border-y border-cream/20 py-2.5 text-center">
+            <h3
+              className="hero-right-lines flex justify-center overflow-hidden border-y border-cream/20 py-2.5 text-center"
+              aria-label="Time Remaining"
+            >
               <RevealWords
                 text="Time Remaining"
                 itemClass="hero-right-word"
@@ -310,7 +322,10 @@ export function Hero() {
             <div className="hero-countdown py-4">
               <Countdown targetDate={SITE.eventDate} />
             </div>
-            <p className="flex justify-center pb-4 text-center font-display text-base uppercase tracking-[0.1em] text-cream/80 sm:text-lg">
+            <p
+              className="flex justify-center pb-4 text-center font-display text-base uppercase tracking-[0.1em] text-cream/80 sm:text-lg"
+              aria-label={SITE.eventDateLabel}
+            >
               <RevealWords
                 text={SITE.eventDateLabel}
                 itemClass="hero-right-word"
