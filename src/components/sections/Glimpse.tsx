@@ -134,7 +134,7 @@ export function Glimpse() {
       <div ref={pinRef} className="relative h-[100svh] w-full overflow-hidden">
         <div ref={trackRef} className="absolute left-0 top-0 flex h-full w-full will-change-transform">
           {items.map((item, index) => (
-            <article key={item.index} data-glimpse-slide className="relative h-full w-full flex-shrink-0" aria-roledescription="slide" aria-label={Slide  of : }>
+            <article key={item.index} data-glimpse-slide className="relative h-full w-full flex-shrink-0" aria-roledescription="slide" aria-label={`Slide ${index + 1} of ${items.length}`}>
               <div className="relative h-full w-full overflow-hidden bg-navy">
                 <img src={item.src} srcSet={item.srcSet} sizes="100vw" width={item.width} height={item.height} alt={item.alt} loading={index === 0 ? "eager" : "lazy"} decoding="async" draggable={false} className="h-full w-full object-cover" />
 
@@ -150,7 +150,7 @@ export function Glimpse() {
                 <div data-glimpse-caption className="absolute bottom-10 left-5 right-5 flex flex-col items-start gap-3 sm:bottom-16 sm:left-8 sm:right-8">
                   <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-ivory/70">Venture Verse Archive</span>
                   <p className="font-display text-[clamp(2.4rem,8vw,6rem)] font-semibold uppercase leading-[0.88] tracking-[-0.05em] text-ivory">{item.caption}</p>
-                  <p className="max-w-xl font-body text-sm leading-relaxed text-ivory/80">{item.alt.replace(, Venture Verse archive frame , "")}</p>
+                  <p className="max-w-xl font-body text-sm leading-relaxed text-ivory/80">{item.alt.replace("Venture Verse archive frame ", "")}</p>
                 </div>
               </div>
             </article>
