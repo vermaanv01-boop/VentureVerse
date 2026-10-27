@@ -1,273 +1,183 @@
-import type { CSSProperties, KeyboardEvent, TouchEvent } from "react";
-import { useCallback, useEffect, useRef, useState } from "react";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+﻿import { useEffect, useRef } from "react";
 import { ARCHIVE_ITEMS } from "../../data/site";
-import { ArchiveVisual } from "../visuals/ArchiveVisual";
 import { SectionTitle } from "../ui/SectionTitle";
-
-function getCardStyle(
-  offset: number,
-  width: number,
-  height: number,
-): CSSProperties {
-  const horizontalStep = width * 0.34;
-  const horizontalFar = width * 0.58;
-  const depth = height * 0.5;
-  const depthFar = height * 0.92;
-  const depthHidden = height * 1.46;
-
-  if (offset === 0) {
-    return {
-      transform: "translateX(0px) translateZ(0px) scale(1) rotateY(0deg)",
-      zIndex: 10,
-      opacity: 1,
-      filter: "brightness(1)",
-      pointerEvents: "none",
-    };
-  }
-
-  if (offset === 1) {
-    return {
-      transform: `translateX(${horizontalStep}px) translateZ(-${depth}px) rotateY(-15deg) scale(0.88)`,
-      zIndex: 8,
-      opacity: 0.85,
-      filter: "brightness(0.72)",
-      pointerEvents: "auto",
-    };
-  }
-
-  if (offset === -1) {
-    return {
-      transform: `translateX(-${horizontalStep}px) translateZ(-${depth}px) rotateY(15deg) scale(0.88)`,
-      zIndex: 8,
-      opacity: 0.85,
-      filter: "brightness(0.72)",
-      pointerEvents: "auto",
-    };
-  }
-
-  if (offset === 2) {
-    return {
-      transform: `translateX(${horizontalFar}px) translateZ(-${depthFar}px) rotateY(-25deg) scale(0.75)`,
-      zIndex: 5,
-      opacity: 0.5,
-      filter: "brightness(0.5)",
-      pointerEvents: "auto",
-    };
-  }
-
-  if (offset === -2) {
-    return {
-      transform: `translateX(-${horizontalFar}px) translateZ(-${depthFar}px) rotateY(25deg) scale(0.75)`,
-      zIndex: 5,
-      opacity: 0.5,
-      filter: "brightness(0.5)",
-      pointerEvents: "auto",
-    };
-  }
-
-  return {
-    transform: `translateX(0px) translateZ(-${depthHidden}px) scale(0.6)`,
-    zIndex: 1,
-    opacity: 0,
-    filter: "brightness(0.3)",
-    pointerEvents: "none",
-  };
-}
+import { gsap } from "../../lib/gsap";
+import { usePrefersReducedMotion } from "../../hooks/usePrefersReducedMotion";
 
 export function Glimpse() {
   const items = ARCHIVE_ITEMS;
-  const [active, setActive] = useState(0);
-  const [size, setSize] = useState({ width: 0, height: 0 });
-  const viewportRef = useRef<HTMLDivElement | null>(null);
-  const touchStart = useRef(0);
+  const reducedMotion = usePrefersReducedMotion();
+
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const pinRef = useRef<HTMLDivElement | null>(null);
+  const trackRef = useRef<HTMLDivElement | null>(null);
+  const slidesRef = useRef<HTMLDivElement[]>([]);
+  const masksRef = useRef<HTMLDivElement[]>([]);
+  const captionsRef = useRef<HTMLDivElement[]>([]);
+  const frameCountRef = useRef<HTMLSpanElement | null>(null);
+  const totalRef = useRef<HTMLSpanElement | null>(null);
 
   useEffect(() => {
-    const element = viewportRef.current;
-    if (!element) return;
+    const section = sectionRef.current;
+    const pin = pinRef.current;
+    const track = trackRef.current;
+    if (!section || !pin || !track) return;
 
-    const observer = new ResizeObserver(([entry]) => {
-      const width = entry.contentRect.width;
-      setSize({ width, height: (width * 9) / 16 });
-    });
+    slidesRef.current = Array.from(
+      track.querySelectorAll<HTMLElement>("[data-glimpse-slide]"),
+    );
+    masksRef.current = Array.from(
+      track.querySelectorAll<HTMLElement>("[data-glimpse-mask]"),
+    );
+    captionsRef.current = Array.from(
+      track.querySelectorAll<HTMLElement>("[data-glimpse-caption]"),
+    );
 
-    observer.observe(element);
-    return () => observer.disconnect();
-  }, []);
-
-  const move = useCallback(
-    (direction: number) => {
-      setActive((current) => (current + direction + items.length) % items.length);
-    },
-    [items.length],
-  );
-
-  const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
-    if (event.key === "ArrowLeft") {
-      event.preventDefault();
-      move(-1);
+    if (totalRef.current) {
+      totalRef.current.textContent = String(items.length).padStart(2, "0");
     }
 
-    if (event.key === "ArrowRight") {
-      event.preventDefault();
-      move(1);
-    }
-  };
+    const ctx = gsap.context(() => {
+      if (reducedMotion) {
+        gsap.set(track, { x: 0 });
+        slidesRef.current.forEach((slide, index) => {
+          gsap.set(slide, { opacity: index === 0 ? 1 : 0.4 });
+        });
+        masksRef.current.forEach((mask) => {
+          gsap.set(mask, { scaleX: 1 });
+        });
+        captionsRef.current.forEach((cap, index) => {
+          gsap.set(cap, { y: 0, opacity: index === 0 ? 1 : 0.6 });
+        });
+        if (frameCountRef.current) {
+          frameCountRef.current.textContent = String(1).padStart(2, "0");
+        }
+        return;
+      }
 
-  const handleTouchStart = (event: TouchEvent<HTMLDivElement>) => {
-    touchStart.current = event.touches[0].clientX;
-  };
+      const totalSlides = slidesRef.current.length;
+      if (totalSlides === 0) return;
 
-  const handleTouchEnd = (event: TouchEvent<HTMLDivElement>) => {
-    const delta = event.changedTouches[0].clientX - touchStart.current;
-    if (Math.abs(delta) > 40) {
-      move(delta < 0 ? 1 : -1);
-    }
-  };
+      gsap.set(track, { xPercent: 0 });
+      slidesRef.current.forEach((slide, i) => {
+        gsap.set(slide, { xPercent: i * 100, scale: 1 });
+      });
+
+      masksRef.current.forEach((mask) => {
+        gsap.set(mask, { scaleX: 1, transformOrigin: "left center" });
+      });
+
+      captionsRef.current.forEach((cap, i) => {
+        gsap.set(cap, { y: i === 0 ? 0 : 40, opacity: i === 0 ? 1 : 0 });
+      });
+
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: section,
+          start: "top top",
+          end: () => "+=" + (totalSlides * 140) + "%",
+          pin: pin,
+          scrub: 1,
+          anticipatePin: 1,
+          invalidateOnRefresh: true,
+        },
+      });
+
+      for (let i = 0; i < totalSlides - 1; i++) {
+        tl.to(track, { xPercent: -(i + 1) * 100, ease: "none", duration: 1 }, i);
+        tl.to(slidesRef.current[i + 1], { scale: 1.015, duration: 1, ease: "none" }, i);
+        tl.to(slidesRef.current[i], { scale: 0.985, duration: 1, ease: "none" }, i);
+        tl.to(masksRef.current[i + 1], { scaleX: 0, transformOrigin: "right center", duration: 0.6, ease: "power2.inOut" }, i + 0.1);
+        tl.to(masksRef.current[i], { scaleX: 0, transformOrigin: "left center", duration: 0.6, ease: "power2.inOut" }, i + 0.2);
+        tl.to(captionsRef.current[i], { y: -30, opacity: 0, duration: 0.4, ease: "power2.out" }, i);
+        tl.to(captionsRef.current[i + 1], { y: 0, opacity: 1, duration: 0.5, ease: "power2.out" }, i + 0.25);
+        tl.call(() => {
+          if (frameCountRef.current) {
+            frameCountRef.current.textContent = String(i + 2).padStart(2, "0");
+          }
+        }, [], i + 0.3);
+      }
+      tl.to({}, { duration: 0.1 });
+    }, section);
+
+    const handleResize = () => {
+      if (typeof window !== "undefined") {
+        try {
+          const st = (gsap as any).globals?.ScrollTrigger || (gsap as any).ScrollTrigger;
+          if (st && st.refresh) st.refresh();
+        } catch {}
+      }
+    };
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      ctx.revert();
+    };
+  }, [items.length, reducedMotion]);
 
   return (
-    <section
-      id="glimpses"
-      className="section-light relative z-10 scroll-mt-20 overflow-hidden bg-ivory"
-    >
-      <div className="container-page section-pad">
+    <section id="glimpses" ref={sectionRef} className="section-light relative z-10 scroll-mt-20 overflow-hidden bg-ivory">
+      <div className="container-page section-pad pb-0">
         <div className="border-t border-navy/15 pt-10 text-center lg:pt-12">
           <p className="eyebrow mb-6 justify-center">
             <span className="eyebrow-line" aria-hidden="true" />
             06 / The archive
             <span className="eyebrow-line" aria-hidden="true" />
           </p>
-          <SectionTitle
-            text="Glimpses of Venture Verse"
-            className="text-[clamp(2.6rem,6.5vw,5.8rem)]"
-          />
+          <SectionTitle text="Glimpses of Venture Verse" className="text-[clamp(2.6rem,6.5vw,5.8rem)]" />
           <p className="body-copy mx-auto mt-5 max-w-xl text-pretty">
-            Experience the incredible energy, innovation, and legacy of Venture
-            Verse — a journey through our past editions.
+            Experience the incredible energy, innovation, and legacy of Venture Verse — a journey through our past editions.
           </p>
         </div>
+      </div>
 
-        <div
-          className="mx-auto mt-14 w-full sm:mt-20"
-          style={{ maxWidth: "min(860px, 92vw)" }}
-          onKeyDown={handleKeyDown}
-        >
-          <div
-            ref={viewportRef}
-            className="relative w-full outline-offset-8"
-            style={{
-              height: size.height || undefined,
-              aspectRatio: size.height ? undefined : "16 / 9",
-              perspective: size.width ? size.width * 3.6 : 1400,
-            }}
-            onTouchStart={handleTouchStart}
-            onTouchEnd={handleTouchEnd}
-            tabIndex={0}
-            role="group"
-            aria-roledescription="carousel"
-            aria-label="Glimpses of Venture Verse"
-          >
-            <div
-              className="relative h-full w-full"
-              style={{ transformStyle: "preserve-3d" }}
-            >
-              {items.map((item, index) => {
-                let offset = (index - active + items.length) % items.length;
-                if (offset > items.length / 2) offset -= items.length;
+      <div ref={pinRef} className="relative h-[100svh] w-full overflow-hidden">
+        <div ref={trackRef} className="absolute left-0 top-0 flex h-full w-full will-change-transform">
+          {items.map((item, index) => (
+            <article key={item.index} data-glimpse-slide className="relative h-full w-full flex-shrink-0" aria-roledescription="slide" aria-label={Slide  of : }>
+              <div className="relative h-full w-full overflow-hidden bg-navy">
+                <img src={item.src} srcSet={item.srcSet} sizes="100vw" width={item.width} height={item.height} alt={item.alt} loading={index === 0 ? "eager" : "lazy"} decoding="async" draggable={false} className="h-full w-full object-cover" />
 
-                const isActive = offset === 0;
-                const isClickable = Math.abs(offset) <= 2 && offset !== 0;
-                const cardStyle = getCardStyle(offset, size.width, size.height);
+                <div data-glimpse-mask className="pointer-events-none absolute inset-0 bg-navy" aria-hidden="true" />
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-navy via-navy/25 to-transparent" aria-hidden="true" />
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-navy/70 via-transparent to-transparent" aria-hidden="true" />
 
-                if (!size.width || Math.abs(offset) > 3) return null;
+                <div className="absolute left-5 right-5 top-5 flex items-start justify-between gap-4 sm:left-8 sm:right-8 sm:top-8">
+                  <span className="font-mono text-[9px] uppercase tracking-[0.22em] text-gold">VV / Glimpses</span>
+                  <span className="font-mono text-[8px] uppercase tracking-[0.18em] text-ivory/65">Frame {item.index}</span>
+                </div>
 
-                return (
-                  <div
-                    key={item.index}
-                    className="clip-corner absolute overflow-hidden border border-navy/20 bg-navy shadow-panel transition-[transform,opacity,filter] duration-500 ease-out"
-                    style={{
-                      width: size.width,
-                      height: size.height,
-                      left: 0,
-                      top: 0,
-                      cursor: isClickable ? "pointer" : "default",
-                      willChange: "transform, opacity, filter",
-                      ...cardStyle,
-                    }}
-                    onClick={() => {
-                      if (isClickable) move(offset > 0 ? 1 : -1);
-                    }}
-                    aria-hidden={!isActive}
-                  >
-                    <ArchiveVisual
-                      item={item}
-                      total={items.length}
-                      active={isActive}
-                      priority={Math.abs(offset) <= 1}
-                    />
-                    {!isActive ? (
-                      <span className="sr-only">
-                        Slide {index + 1}: {item.alt}
-                      </span>
-                    ) : null}
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-
-          <div className="mt-8 flex flex-col items-center gap-6 sm:mt-10">
-            <div className="flex items-center justify-center gap-5 sm:gap-8">
-              <button
-                id="glimpses-prev-btn"
-                type="button"
-                onClick={() => move(-1)}
-                className="clip-corner group flex h-11 w-14 cursor-pointer items-center justify-center bg-navy text-ivory transition-colors duration-200 hover:bg-gold hover:text-navy active:scale-95 sm:h-12 sm:w-16"
-                aria-label="Previous slide"
-              >
-                <ArrowLeft
-                  size={19}
-                  className="transition-transform duration-200 group-hover:-translate-x-1"
-                  aria-hidden="true"
-                />
-              </button>
-
-              <div
-                className="clip-tag flex min-w-[6.5rem] items-center justify-center border border-navy/15 bg-navy/[0.04] px-5 py-2.5"
-                aria-live="polite"
-                aria-atomic="true"
-              >
-                <span className="font-mono text-[10px] tracking-[0.18em] text-navy">
-                  {String(active + 1).padStart(2, "0")} /{" "}
-                  {String(items.length).padStart(2, "0")}
-                </span>
+                <div data-glimpse-caption className="absolute bottom-10 left-5 right-5 flex flex-col items-start gap-3 sm:bottom-16 sm:left-8 sm:right-8">
+                  <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-ivory/70">Venture Verse Archive</span>
+                  <p className="font-display text-[clamp(2.4rem,8vw,6rem)] font-semibold uppercase leading-[0.88] tracking-[-0.05em] text-ivory">{item.caption}</p>
+                  <p className="max-w-xl font-body text-sm leading-relaxed text-ivory/80">{item.alt.replace(, Venture Verse archive frame , "")}</p>
+                </div>
               </div>
-
-              <button
-                id="glimpses-next-btn"
-                type="button"
-                onClick={() => move(1)}
-                className="clip-corner group flex h-11 w-14 cursor-pointer items-center justify-center bg-navy text-ivory transition-colors duration-200 hover:bg-gold hover:text-navy active:scale-95 sm:h-12 sm:w-16"
-                aria-label="Next slide"
-              >
-                <ArrowRight
-                  size={19}
-                  className="transition-transform duration-200 group-hover:translate-x-1"
-                  aria-hidden="true"
-                />
-              </button>
-            </div>
-
-            <p className="text-center font-mono text-[9px] uppercase tracking-[0.18em] text-navy/70">
-              Swipe, click a side card, or use the arrow keys
-            </p>
-          </div>
-
-          <p className="mx-auto mt-8 max-w-xl text-center font-body text-xs leading-relaxed text-navy/70">
-            Sixteen frames from the Venture Verse archive. Use the controls or
-            swipe to move through the previous ceremonies.
-          </p>
+            </article>
+          ))}
         </div>
+
+        <div className="pointer-events-none absolute bottom-6 left-0 right-0 z-20 flex items-center justify-center gap-4 sm:bottom-10">
+          <div className="clip-tag flex min-w-[6.5rem] items-center justify-center border border-ivory/30 bg-navy/40 px-5 py-2.5 backdrop-blur-sm" aria-live="polite" aria-atomic="true">
+            <span className="font-mono text-[10px] tracking-[0.18em] text-ivory">
+              <span ref={frameCountRef}>{String(1).padStart(2, "0")}</span> /{" "}
+              <span ref={totalRef}>{String(items.length).padStart(2, "0")}</span>
+            </span>
+          </div>
+        </div>
+
+        <div className="pointer-events-none absolute left-0 right-0 top-1/2 z-20 -translate-y-1/2">
+          <div className="container-page flex justify-between">
+            <span className="hidden font-mono text-[9px] uppercase tracking-[0.18em] text-ivory/50 lg:block">Scroll to explore</span>
+            <span className="hidden font-mono text-[9px] uppercase tracking-[0.18em] text-ivory/50 lg:block">Vertical → Cinematic</span>
+          </div>
+        </div>
+      </div>
+
+      <div className="container-page pb-16 pt-10 sm:pb-20 sm:pt-12">
+        <p className="mx-auto max-w-xl text-center font-body text-xs leading-relaxed text-navy/70">
+          Sixteen frames from the Venture Verse archive. Scroll to move through the past ceremonies in a cinematic sequence.
+        </p>
       </div>
     </section>
   );
